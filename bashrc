@@ -96,6 +96,8 @@ alias free='free -m'                      # show sizes in MB
 alias np='nano -w PKGBUILD'
 alias more=less
 
+alias ls="ls -lhto --color=auto" #added by USER
+
 xhost +local:root > /dev/null 2>&1
 
 complete -cf sudo
@@ -137,10 +139,3 @@ ex ()
     echo "'$1' is not a valid file"
   fi
 }
-
-# better yaourt colors
-export YAOURT_COLORS="nb=1:pkg=1:ver=1;32:lver=1;45:installed=1;42:grp=1;34:od=1;41;5:votes=1;44:dsc=0:other=1;35"
-
-export PATH="~/.config/composer/vendor/bin:$PATH"
-
-export QSYS_ROOTDIR="/home/rodrigo/Documents/installer/quartus-free/pkg/quartus-free/opt/altera/19.1/quartus/sopc_builder/bin"
