@@ -1,6 +1,9 @@
-cp ~/.i3/config i3.config
-cp ~/.vimrc vimrc
-cp ~/.profile profile
-cp ~/.bashrc bashrc
-cp ~/.config/dmenu-recent/background config.dmenu-recent.background
-cp ~/.config/mimeapps.list config.mineapps.list
+# First we copy files
+cp ~/.vimrc ~/.profile ~/.bashrc ~/.zshrc ~/.zsh_history ~/.bash_history ~/.bash_profile ~/.Xresources ~/.zhistory .xinitrc .Xauthority .
+
+
+# Copyng directories
+cp -r ~/.i3/ .
+mkdir .config
+cp -r ~/.config/{i3,mimeapps.list,dmenu-recent} .config 
+cp -r ~/.images .
