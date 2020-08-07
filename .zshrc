@@ -106,4 +106,7 @@ alias more=less
 
 alias ls="ls -lhto --color=auto" #added by USER
 alias l="ls -lhX1 --color=auto" #added by USER
+alias v="nvim" #added by USER
+alias sv="sudo nvim" #added by USER
+alias vw="viewnior" #added by USER
 

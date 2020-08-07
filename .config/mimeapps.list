@@ -39,3 +39,6 @@ x-scheme-handler/mailto=userapp-Thunderbird.desktop;
 message/rfc822=userapp-Thunderbird.desktop;
 application/pdf=evince.desktop;org.gnome.Evince.desktop;
 application/x-bittorrent=deluge.desktop;
+inode/directory=exo-file-manager.desktop;
+x-scheme-handler/trash=exo-file-manager.desktop;
+

@@ -1,20 +1,3 @@
-node
-node
-./ltxcmp.sh fi-pdflatex
-./ltxcmp.sh fi-pdflatex
-./ltxcmp.sh fi-pdflatex
-./ltxcmp.sh fi-pdflatex
-./ltxcmp.sh fi-pdflatex
-./ltxcmp.sh fi-pdflatex
-./ltxcmp.sh fi-pdflatex
-./ltxcmp.sh fi-pdflatex
-./ltxcmp.sh fi-pdflatex
-./ltxcmp.sh fi-pdflatex
-./ltxcmp.sh fi-pdflatex
-./ltxcmp.sh fi-pdflatex
-ls
-ls ../
-ls ../introduccionJS.assets/
 ls ../introduccionJS.assets/
 ./ltxcmp.sh fi-pdflatex
 ./ltxcmp.sh fi-pdflatex
@@ -498,3 +481,20 @@ python
 cat .zshrc
 cat .zshrc 
 nvim .zshrc
+for n in {1...10};do printf "$n ";done
+exit
+ls mys*
+php myscript.
+php myscript.php 
+php myscript.php 
+php myscript.php 
+php myscript.php 
+php myscript.php 
+php myscript.php 
+php myscript.php 
+php myscript.php 
+php myscript.php 
+php myscript.php 
+php myscript.php 
+php myscript.php 
+php myscript.php 
