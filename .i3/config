@@ -187,7 +187,11 @@ bindsym $mod+Shift+8 move container to workspace $ws8; workspace $ws8
 assign [class="firefox"] $ws2
 assign [class="spotify"] $ws8
 # assign [class="Pcmanfm"] $ws3
-# assign [class="Skype"] $ws5
+assign [class="Skype"] $ws6
+assign [class="zoom"] $ws6
+
+# Workspaces useful bindings
+bindsym $mod+p move workspace to output right
 
 # Open specific applications in floating mode
 for_window [title="alsamixer"] floating enable border pixel 1
@@ -370,9 +374,9 @@ bindsym $mod+m bar mode toggle
 #############################
 
 # Set inner/outer gaps
-gaps inner 10
+gaps inner 8
 #gaps outer -2
-gaps outer 2 
+gaps outer 1 
 
 # Additionally, you can issue commands with the following syntax. This is useful to bind keys to changing the gap size.
 # gaps inner|outer current|all set|plus|minus <px>
@@ -422,3 +426,9 @@ mode "$mode_gaps_outer" {
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
+
+# bindsym $mod+o exec xdg-open ~/Downloads/horario.pdf
+bindsym $mod+o exec ~/.scripts/horario.sh
+bindsym $mod+i workspace $ws4; exec ~/.scripts/study/bda.sh
+bindsym $mod+g workspace $ws5; exec ~/.scripts/study/bdd.sh
+

@@ -8,3 +8,4 @@ mkdir .config
 cp -r ~/.config/{mimeapps.list,dmenu-recent,ranger} .config 
 cp -r ~/.images .
 cp -r ~/.screenlayout .
+cp -r ~/.scripts .
