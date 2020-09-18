@@ -1,0 +1,21 @@
+{
+  "editor.minimap.enabled": false,
+  "window.zoomLevel": 0,
+  "editor.tabSize": 2,
+  "editor.formatOnSave": true,
+  "workbench.colorTheme": "One Dark Pro",
+  "prettier.jsxSingleQuote": true,
+  "prettier.singleQuote": true,
+  "prettier.trailingComma": "all",
+  "editor.formatOnPaste": true,
+  "[vue]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  //   "editor.codeActionsOnSave": null,
+  "editor.rulers": [
+    80,
+    120
+  ],
+  "latex.server.autoDownload": true,
+  "window.menuBarVisibility": "toggle"
+}

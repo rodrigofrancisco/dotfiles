@@ -1,4 +1,6 @@
 0
+/usr/share/backgrounds/arcolinux/peaceofmind-1920x1200.jpg
+/home/rodrigo/.images/iceland.jpg
 /usr/share/backgrounds/arcolinux/arco-wallpaper.jpg
 /usr/share/backgrounds/arcolinux/blue-earth-2880x1800.jpg
 /home/rodrigo/.images/mountains.jpg
@@ -97,5 +99,3 @@
 /home/rodrigo/.config/variety/Favorites/yosemite-mountains-3250x1828.jpg
 /usr/share/backgrounds/arcolinux/seaside-3992x2242.jpg
 /usr/share/backgrounds/arcolinux/sea-of-mystery-3840x2160.jpg
-/usr/share/backgrounds/arcolinux/soft-morning-3200x2000.jpg
-/usr/share/backgrounds/arcolinux/yosemite-mountains-3250x1828.jpg

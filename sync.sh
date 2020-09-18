@@ -19,7 +19,8 @@ cp -r ~/.config/{termite,alacritty} .config
 cp -r ~/.config/mimeapps.list* .config 
 cp -r ~/.config/autostart .config
 cp -r ~/.config/ranger .config 
-cp -r ~/.config/Code\ -\ OSS/User .config
+mkdir .config/Code\ -\ OSS/
+cp -r ~/.config/Code\ -\ OSS/User .config/Code\ -\ OSS/
 cp -r ~/.config/nano .config
 cp -r ~/.config/neofetch .config
 cp -r ~/.config/rofi .config
