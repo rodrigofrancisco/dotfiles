@@ -31,7 +31,7 @@ cp -r ~/.config/conky .config
 cp -r ~/.config/obs-studio .config
 cp -r ~/.config/pcmanfm .config
 cp -r ~/.config/rclone-browser .config
-cp -r ~/.config/variety .config
+#cp -r ~/.config/variety .config
 
 cp -r ~/.images .
 cp -r ~/.screenlayout .

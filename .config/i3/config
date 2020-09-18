@@ -77,6 +77,11 @@ exec --no-startup-id xrandr --output $lmonitor --primary
 # Move workpace to right monitor
 bindsym $mod+comma move workspace to output right
 
+bindsym $mod+F9 exec --no-startup-id ~/.screenlayout/extendedL.sh
+bindsym $mod+F10 exec --no-startup-id ~/.screenlayout/normal.sh
+bindsym $mod+F11 exec --no-startup-id ~/.screenlayout/duplicate.sh
+bindsym $mod+F12 exec --no-startup-id ~/.screenlayout/extendedR.sh
+
 #set $firstMonitor HDMI1
 #set $secondMonitor HDMI2
 
