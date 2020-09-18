@@ -1,0 +1,2 @@
+#!/bin/sh
+feh --no-fehbg --bg-fill '/home/rodrigo/.config/variety/wallpaper/wallpaper-clock-8f97cc98d1c7dcb09d56f2ca545e05a8.jpg' 

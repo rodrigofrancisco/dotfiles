@@ -1,5 +1,6 @@
-export QT_QPA_PLATFORMTHEME="qt5ct"
-export EDITOR=/usr/bin/nano
-export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
-# fix "xdg-open fork-bomb" export your preferred browser from here
+PATH="$HOME/.node_modules/bin:$PATH"
+export npm_config_prefix=~/.node_modules
+
 export BROWSER=/usr/bin/firefox
+
+export PATH="$HOME/.config/composer/vendor/bin:$PATH"

@@ -1,237 +1,185 @@
-Xft.dpi:       96
-Xft.antialias: true
-Xft.hinting:   true
-Xft.rgba:      rgb
-Xft.autohint:  false
-Xft.hintstyle: hintslight
-Xft.lcdfilter: lcddefault
+! ------------------------------------------------------------------------------
+! xterm standard arcolinux theme
+! ------------------------------------------------------------------------------
+! https://critical.ch/xterm/
+! ------------------------------------------------------------------------------
 
-XTerm*background:        #222D31
-XTerm*foreground:        #d8d8d8
-XTerm*pointerColor:      #1ABB9B
-XTerm*faceName:          Fixed
-XTerm*faceSize:          11
-XTerm*reverseVideo:      on
-XTerm*selectToClipboard: true
+xterm*font: 7x13
+xterm*faceName: Monospace:size=12:antialias=false
+xterm*loginShell: true
+xterm*vt100*geometry: 90x34
+xterm*saveLines: 2000
+xterm*charClass: 33:48,35:48,37:48,43:48,45-47:48,64:48,95:48,126:48
+xterm*termName: xterm-color
+xterm*eightBitInput: false
+xterm*foreground: rgb:d9/d4/d4
+xterm*background: rgb:32/32/32
+xterm*color0: rgb:00/00/00
+xterm*color1: rgb:a8/00/00
+xterm*color2: rgb:00/a8/00
+xterm*color3: rgb:a8/54/00
+xterm*color4: rgb:5f/81/9d
+xterm*color5: rgb:a8/00/a8
+xterm*color6: rgb:00/a8/a8
+xterm*color7: rgb:70/78/80
+xterm*color8: rgb:54/54/54
+xterm*color9: rgb:fc/54/54
+xterm*color10: rgb:54/fc/54
+xterm*color11: rgb:fc/fc/54
+xterm*color12: rgb:81/a2/be
+xterm*color13: rgb:fc/54/fc
+xterm*color14: rgb:54/fc/fc
+xterm*color15: rgb:c5/c8/c6
+xterm*boldMode: false
 
-*background:                      #222D31
-*foreground:                      #d8d8d8
-*fading:                          8
-*fadeColor:                       black
-*cursorColor:                     #1ABB9B
-*pointerColorBackground:          #2B2C2B
-*pointerColorForeground:          #16A085
 
-!! black dark/light
-*color0:                          #222D31
-*color8:                          #585858
 
-!! red dark/light
-*color1:                          #ab4642
-*color9:                          #ab4642
+! ------------------------------------------------------------------------------
+! URxvt standard arcolinux theme - Reload with xrdb -merge ~/.Xresources
+! ------------------------------------------------------------------------------
 
-!! green dark/light
-*color2:                          #7E807E
-*color10:                         #8D8F8D
 
-!! yellow dark/light
-*color3:                          #f7ca88
-*color11:                         #f7ca88
 
-!! blue dark/light
-*color4:                          #7cafc2
-*color12:                         #7cafc2
+! general settings
+URxvt*saveline:         15000
+URxvt*termName:         xterm-256color
+URxvt*urgentOnBell:     false
+URxvt*visualBell:       false
+URxvt*iso14755:         false
+URxvt*iso14755_52:      false
+URxvt*meta8:            false
+URxvt*metaSendsEscape:  true
+URxvt*iconFile:  		/usr/share/icons/Sardi-Mono/scalable/apps/terminal.svg
 
-!! magenta dark/light
-*color5:                          #ba8baf
-*color13:                         #ba8baf
+! appearance
+URxvt*depth:             32
+!URxvt*transparent:      true
+URxvt*shading:          30
+URxvt*background:       rgba:2222/2222/2222/AAAA
+!URxvt*background:       [80]#404552
+!URxvt*background:       [70]#3F424A
+!URxvt*background:        [80]#282A36
+URxvt*foreground:        #F8F8FF
+URxvt*underlineColor:    #4682B4
+URxvt*highlightColor:    #4682B4
+URxvt*throughColor:      Blue
+URxvt*cursorColor:       #c5c8c6
+URxvt*scrollBar:         false
+URxvt*scrollTtyOutput:   false
+URxvt*scrollWithBuffer:  true
+URxvt*scrollTtyKeypress: true
+URxvt*internalBorder:    0
+URxvt*externalBorder:    0
+URxvt*colorIT:      	 #87af5f
+URxvt*colorBD:      	 #c5c8c6
+URxvt*colorUL:      	 #87afd7
 
-!! cyan dark/light
-*color6:                          #1ABB9B
-*color14:                         #1ABB9B
 
-!! white dark/light
-*color7:                          #d8d8d8
-*color15:                         #f8f8f8
+! colors
+URxvt*color0: #3f3f3f
+URxvt*color1: #ac3c3c
+URxvt*color2: #60b48a
+URxvt*color3: #dfaf8f
+URxvt*color4: #506070
+URxvt*color5: #dc8cc3
+URxvt*color6: #8cd0d3
+URxvt*color7: #dcdccc
+URxvt*color8: #79A9FF
+URxvt*color9: #da6e6e
+URxvt*color10: #c3bf9f
+URxvt*color11: #f0dfaf
+URxvt*color12: #94bff3
+URxvt*color13: #ec93d3
+URxvt*color14: #93e0e3
+URxvt*color15: #ffffff
 
-Xcursor.theme: xcursor-breeze
-Xcursor.size:                     0
+! fonts
+URxvt*letterSpace: 	    		-2
+URxvt*font:                 	xft:Monospace:regular:size=12
+URxvt*imFont:               	xft:Monospace:regular:size=12
+URxvt*boldFont:             	xft:Monospace:bold:size=12
+URxvt*italicFont:           	xft:Monospace:italic:size=12
+URxvt*boldItalicFont:     		xft:Monospace:regular:size=12
+! run :.!fc-list | grep <font-name>
 
-URxvt.font:                       9x15,xft:TerminessTTFNerdFontMono
+! perl extensions
+URxvt*perl-ext-common:  default,clipboard,url-select,keyboard-select,resize-font
+!URxvt*perl-ext-common:  default,clipboard,url-select,keyboard-select,tabbed
 
-! alternative font settings with 'terminus':
-! URxvt.font:      -xos4-terminus-medium-r-normal--16-160-72-72-c-80-iso10646-1
-! URxvt.bold.font: -xos4-terminus-bold-r-normal--16-160-72-72-c-80-iso10646-1
-!! terminus names see end of file!
+! macros for clipboard and selection
+URxvt*copyCommand:      xclip -i -selection clipboard
+URxvt*pasteCommand:     xclip -o -selection clipboard
+URxvt*keysym.M-c:       perl:clipboard:copy
+URxvt*keysym.m-v:       perl:clipboard:paste
+URxvt*keysym.M-C-v:     perl:clipboard:paste_escaped
+URxvt*keysym.M-Escape:  perl:keyboard-select:activate
+URxvt*keysym.M-s:       perl:keyboard-select:search
+URxvt*keysym.M-u:       perl:url-select:select_next
+URxvt*resize-font.smaller:	C-Down
+URxvt*resize-font.bigger:	C-Up
+URxvt*urlLauncher:      firefox
+URxvt*underlineURLs:    true
+URxvt*urlButton:        1
+URxvt*geometry: 		90x30
 
-URxvt.depth:                      32
-URxvt.background:                 [100]#222D31
-URxvt*scrollBar:                  false
-URxvt*mouseWheelScrollPage:       false
-URxvt*cursorBlink:                true
-URxvt*background:                 black
-URxvt*foreground:                 grey
-URxvt*saveLines:                  5000
+! tabbed
+URxvt*tabbed.tabbar-fg: 4
+URxvt*tabbed.tabbar-bg: 16
+URxvt*tabbed.tab-fg:    15
+URxvt*tabbed.tab-bg:    4
+URxvt*buffered:         false
+URxvt*keysym.Control-Shift-C: perl:clipboard:copy
+URxvt*keysym.Control-Shift-V: perl:clipboard:paste
 
-! for 'fake' transparency (without Compton) uncomment the following three lines
-! URxvt*inheritPixmap:            true
-! URxvt*transparent:              true
-! URxvt*shading:                  138
 
-! Normal copy-paste keybindings without perls
-URxvt.iso14755:                   false
-URxvt.keysym.Shift-Control-V:     eval:paste_clipboard
-URxvt.keysym.Shift-Control-C:     eval:selection_to_clipboard
-!Xterm escape codes, word by word movement
-URxvt.keysym.Control-Left:        \033[1;5D
-URxvt.keysym.Shift-Control-Left:  \033[1;6D
-URxvt.keysym.Control-Right:       \033[1;5C
-URxvt.keysym.Shift-Control-Right: \033[1;6C
-URxvt.keysym.Control-Up:          \033[1;5A
-URxvt.keysym.Shift-Control-Up:    \033[1;6A
-URxvt.keysym.Control-Down:        \033[1;5B
-URxvt.keysym.Shift-Control-Down:  \033[1;6B
 
-! Rxvt.perl-ext-common:             ...,clipboard
-! URxvt.keysym.M-C-c:               perl:clipboard:copy
-! URxvt.keysym.M-v:                 perl:clipboard:paste
-! URxvt.keysym.M-C-v:               perl:clipboard:paste_escaped
-! URxvt*termName:                   string
-! URxvt*geometry:                   geometry
-! URxvt*chdir:                      string
-! URxvt*loginShell:                 boolean
-! URxvt*multiClickTime:             number
-! URxvt*jumpScroll:                 boolean
-! URxvt*skipScroll:                 boolean
-! URxvt*pastableTabs:               boolean
-! URxvt*scrollstyle:                plain
-! URxvt*scrollBar_right:            boolean
-! URxvt*scrollBar_floating:         true
-! URxvt*scrollBar_align:            mode
-! URxvt*thickness:                  number
-! URxvt*scrollTtyOutput:            boolean
-! URxvt*scrollTtyKeypress:          boolean
-! URxvt*scrollWithBuffer:           boolean
-! URxvt*tintColor:                  !7DA55
-! URxvt*blurRadius:                 HxV
-! URxvt*fading:                     number
-! URxvt*fadeColor:                  color
-! URxvt*utmpInhibit:                boolean
-! URxvt*urgentOnBell:               boolean
-! URxvt*visualBell:                 boolean
-! URxvt*mapAlert:                   boolean
-! URxvt*meta8:                      boolean
-! URxvt*tripleclickwords:           boolean
-! URxvt*insecure:                   boolean
-! URxvt*cursorUnderline:            boolean
-! URxvt*pointerBlank:               boolean
-! URxvt*color0:                     color
-! URxvt*color1:                     color
-! URxvt*color2:                     color
-! URxvt*color3:                     color
-! URxvt*color4:                     color
-! URxvt*color5:                     color
-! URxvt*color6:                     color
-! URxvt*color7:                     color
-! URxvt*color8:                     color
-! URxvt*color9:                     color
-! URxvt*color10:                    color
-! URxvt*color11:                    color
-! URxvt*color12:                    color
-! URxvt*color13:                    color
-! URxvt*color14:                    color
-! URxvt*color15:                    color
-! URxvt*colorBD:                    color
-! URxvt*colorIT:                    color
-! URxvt*colorUL:                    color
-! URxvt*colorRV:                    color
-! URxvt*underlineColor:             color
-! URxvt*scrollColor:                color
-! URxvt*troughColor:                color
-! URxvt*highlightColor:             color
-! URxvt*highlightTextColor:         color
-! URxvt*cursorColor:                color
-! URxvt*cursorColor2:               color
-! URxvt*pointerColor:               color
-! URxvt*pointerColor2:              color
-! URxvt*borderColor:                color
-! URxvt*iconFile:                   file
-! URxvt*font:                       fontname
-! URxvt*boldFont:                   fontname
-! URxvt*italicFont:                 fontname
-! URxvt*boldItalicFont:             fontname
-! URxvt*intensityStyles:            boolean
-! URxvt*inputMethod:                name
-! URxvt*preeditType:                style
-! URxvt*imLocale:                   string
-! URxvt*imFont:                     fontname
-! URxvt*title:                      string
-! URxvt*iconName:                   string
-! URxvt*buffered:                   boolean
-! URxvt*depth:                      number
-! URxvt*visual:                     number
-! URxvt*transient-for:              windowid
-! URxvt*override-redirect:          boolean
-! URxvt*hold:                       boolean
-! URxvt*externalBorder:             number
-! URxvt*internalBorder:             number
-! URxvt*borderLess:                 true
-! URxvt*lineSpace:                  number
-! URxvt*letterSpace:                number
-! URxvt*skipBuiltinGlyphs:          boolean
-! URxvt*pointerBlankDelay:          number
-! URxvt*backspacekey:               string
-! URxvt*deletekey:                  string
-! URxvt*print-pipe:                 string
-! URxvt*modifier:                   modifier
-! URxvt*cutchars:                   string
-! URxvt*answerbackString:           string
-! URxvt*secondaryScreen:            boolean
-! URxvt*secondaryScroll:            boolean
-! URxvt*perl-lib:                   string
-! URxvt*perl-eval:                  perl-eval
-! URxvt*perl-ext-common:            string
-! URxvt*perl-ext:                   string
-! URxvt*iso14755:                   boolean
-! URxvt*iso14755_52:                boolean
-! URxvt*xrm:                        string
-! URxvt*keysym.sym:                 keysym
-! URxvt*background.border:          boolean
-! URxvt*background.expr:            string
-! URxvt*background.interval:        seconds
-! URxvt*bell-command:               string
-! URxvt*kuake.hotkey:               string
-! URxvt*matcher.button:             string
-! URxvt*matcher.launcher:           string
-! URxvt*matcher.launcher.*:         string
-! URxvt*matcher.pattern.*:          string
-! URxvt*matcher.rend.*:             string
-! URxvt*remote-clipboard.fetch:     string
-! URxvt*remote-clipboard.store:     string
-! URxvt*searchable-scrollback:      string
-! URxvt*selection-autotransform.*:  string
-! URxvt*selection-pastebin.cmd:     string
-! URxvt*selection-pastebin.url:     string
-! URxvt*selection.pattern-0:        string
-! URxvt*tab-bg:                     colour
-! URxvt*tab-fg:                     colour
-! URxvt*tabbar-bg:                  colour
-! URxvt*tabbar-fg:                  colour
-! URxvt*url-launcher:               string
 
-! The Terminus font uses the following X-names:
-! -xos4-terminus-medium-r-normal--12-120-72-72-c-60-iso10646-1
-! -xos4-terminus-medium-r-normal--14-140-72-72-c-80-iso10646-1
-! -xos4-terminus-medium-r-normal--16-160-72-72-c-80-iso10646-1
-! -xos4-terminus-medium-r-normal--20-200-72-72-c-100-iso10646-1
-! -xos4-terminus-medium-r-normal--22-220-72-72-c-110-iso10646-1
-! -xos4-terminus-medium-r-normal--24-240-72-72-c-120-iso10646-1
-! -xos4-terminus-medium-r-normal--28-280-72-72-c-140-iso10646-1
-! -xos4-terminus-medium-r-normal--32-320-72-72-c-160-iso10646-1
-! -xos4-terminus-bold-r-normal--12-120-72-72-c-60-iso10646-1
-! -xos4-terminus-bold-r-normal--14-140-72-72-c-80-iso10646-1
-! -xos4-terminus-bold-r-normal--16-160-72-72-c-80-iso10646-1
-! -xos4-terminus-bold-r-normal--20-200-72-72-c-100-iso10646-1
-! -xos4-terminus-bold-r-normal--24-240-72-72-c-120-iso10646-1
-! -xos4-terminus-bold-r-normal--28-280-72-72-c-140-iso10646-1
-! -xos4-terminus-bold-r-normal--32-320-72-72-c-160-iso10646-1
+
+! ------------------------------------------------------------------------------
+! UXTerm standard arcolinux theme
+! ------------------------------------------------------------------------------
+
+
+
+! termtype
+UXTerm*termName: xterm-256color
+
+
+UXTerm*cursorColor:        white
+UXTerm*VT100.geometry:     90x30
+UXTerm*font:               Monospace
+UXTerm*faceSize:		   12
+UXTerm*dynamicColors:      true
+UXTerm*utf8:               2
+UXTerm*eightBitInput:      true
+UXTerm*saveLines:          10000
+UXTerm*scrollKey:          true
+UXTerm*scrollTtyOutput:    false
+UXTerm*scrollBar:          false
+UXTerm*rightScrollBar:     false
+UXTerm*jumpScroll:         true
+UXTerm*multiScroll:        true
+UXTerm*toolBar:            false
+
+! fix colors
+UXTerm*background: rgb:63/63/63
+UXTerm*foreground: rgb:00/00/00
+UXTerm*color0: rgb:00/00/00
+UXTerm*color1: rgb:a8/00/00
+UXTerm*color2: rgb:00/a8/00
+UXTerm*color3: rgb:a8/54/00
+UXTerm*color4: rgb:00/00/a8
+UXTerm*color5: rgb:a8/00/a8
+UXTerm*color6: rgb:00/a8/a8
+UXTerm*color7: rgb:a8/a8/a8
+UXTerm*color8: rgb:54/54/54
+UXTerm*color9: rgb:fc/54/54
+UXTerm*color10: rgb:54/fc/54
+UXTerm*color11: rgb:fc/fc/54
+UXTerm*color12: rgb:54/54/fc
+UXTerm*color13: rgb:fc/54/fc
+UXTerm*color14: rgb:54/fc/fc
+UXTerm*color15: rgb:fc/fc/fc
+UXTerm*boldMode: false
+UXTerm*colorBDMode: true
+UXTerm*colorBD: rgb:3f/3f/3f
