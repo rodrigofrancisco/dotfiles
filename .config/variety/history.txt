@@ -1,4 +1,5 @@
 0
+/usr/share/backgrounds/arcolinux/floating-world-in-space-3000x2357.jpg
 /usr/share/backgrounds/arcolinux/peaceofmind-1920x1200.jpg
 /home/rodrigo/.images/iceland.jpg
 /usr/share/backgrounds/arcolinux/arco-wallpaper.jpg
@@ -98,4 +99,3 @@
 /usr/share/backgrounds/arcolinux/bluez-7650x5120.jpg
 /home/rodrigo/.config/variety/Favorites/yosemite-mountains-3250x1828.jpg
 /usr/share/backgrounds/arcolinux/seaside-3992x2242.jpg
-/usr/share/backgrounds/arcolinux/sea-of-mystery-3840x2160.jpg
