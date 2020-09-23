@@ -137,8 +137,8 @@ alias cp='cp -i'
 #editors
 alias v='vim'
 alias sv='sudo vim'
-alias vsc='code'
-alias vsc.='code .'
+alias vc='code'
+alias vc.='code .'
 
 #Image viewer
 alias vw='viewnior'

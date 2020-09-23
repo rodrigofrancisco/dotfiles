@@ -6,4 +6,4 @@ Icon=skypeforlinux
 Terminal=false
 Type=Application
 StartupNotify=false
-X-GNOME-Autostart-enabled=trueHidden=false
+X-GNOME-Autostart-enabled=true

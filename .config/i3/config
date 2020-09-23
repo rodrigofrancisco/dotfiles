@@ -144,6 +144,14 @@ bindsym $mod+F3 exec --no-startup-id xfce4-appfinder
 # morc_menu
 bindsym $mod+F2 exec --no-startup-id morc_menu
 
+
+#####################################################################################################################
+#################                          editing config files binding                             #################
+#####################################################################################################################
+
+bindsym $mod+F5 exec --no-startup-id alacritty -e vim ~/.config/i3/config
+
+
 #####################################################################################################################
 #################                          how to exit, logoff, suspend, ...                        #################
 #####################################################################################################################
@@ -360,7 +368,8 @@ assign [class="rclone-browser"]   		 				 → 8
 
 # Workspace 9 all messaging related software
 assign [class="TelegramDesktop|Slack"]   → 9
-assign [class="whatsapp-nativefier-d40211|facebookmessenger-nativefier-7ab88e"]   → 9
+assign [class="whatsapp-nativefier-d40211|facebookmessenger-nativefier-7ab88e"]  → 9
+assign [class="facebook-nativefier-d58ff9"]                                      → 9
 
 # Workspace 10 music related
 assign [class="Spotify|spotify"]                                                 → 10
@@ -1013,4 +1022,4 @@ bindsym mod+minus scratchpad show
 # NOT USED
 
 # get the mouse out of the way with unclutter
-exec --no-startup-id unclutter
+#exec --no-startup-id unclutter

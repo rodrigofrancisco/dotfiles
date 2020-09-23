@@ -17,5 +17,7 @@
     120
   ],
   "latex.server.autoDownload": true,
-  "window.menuBarVisibility": "toggle"
+  "window.menuBarVisibility": "toggle",
+  "breadcrumbs.enabled": true,
+  "workbench.activityBar.visible": true
 }

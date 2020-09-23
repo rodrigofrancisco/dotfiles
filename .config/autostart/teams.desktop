@@ -10,4 +10,4 @@ StartupNotify=false
 Categories=Network;Application;
 MimeType=x-scheme-handler/msteams;
 X-GNOME-Autostart-enabled=true
-X-KDE-Protocols=teamsHidden=false
+X-KDE-Protocols=teams
