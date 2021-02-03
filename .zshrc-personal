@@ -1,0 +1,138 @@
+#editors
+if type "nvim" > /dev/null; then 
+  alias v='nvim' 
+  alias sv='sudo nvim'
+else 
+  alias v='vim'
+  alias sv='sudo vim'
+fi
+alias c='code'
+
+alias ct='bat'
+
+#list
+# Check if lsd is installed
+if type "lsd" > /dev/null; then
+  # Replacing ls with lsd
+  alias ls='lsd -1t --group-dirs first'
+  alias l='lsd -1 --group-dirs first'
+  alias ll='lsd -lt --blocks permission,date,size,name --group-dirs first'
+  alias la='lsd -a -1 --group-dirs first'
+  alias lt='lsd --tree --depth 2 --group-dirs first'
+  alias l.="lsd -a | egrep '^\.'"
+else
+  alias ls='ls --color=auto'
+  alias ls='ls -lhto --color=auto'
+  alias la='ls -a'
+  alias ll='ls -la'
+  alias l='ls -hX1 --color=auto'
+  alias l.="ls -A | egrep '^\.'"
+fi
+
+#cp
+alias cp='cp -i'
+alias mv='mv -i'
+alias rm='rm -i'
+
+#Image viewer
+alias vw='viewnior'
+
+#PDF viewer
+alias ev='evince'
+
+#matlab
+alias matlab='matlab -desktop'
+
+#fix obvious typo's
+alias cd..='cd ..'
+alias pdw="pwd"
+
+## Colorize the grep command output for ease of use (good for log files)##      
+alias grep='grep --color=auto'                                                  
+alias egrep='egrep --color=auto'                                                
+alias fgrep='fgrep --color=auto'                                                
+                                                                                
+#readable output                                                                
+alias df='df -h'
+
+#free
+alias free="free -mt"
+
+#continue download
+alias wget="wget -c"
+
+#ps                                                                             
+alias psa="ps auxf"                                                             
+alias psgrep="ps aux | grep -v grep | grep -i -e VSZ -e"
+
+#hardware info --short
+alias hw="hwinfo --short"
+
+#shutdown or reboot                                                             
+alias ssn="sudo shutdown now"                                                   
+alias sr="sudo reboot"                                                          
+
+# Git bare repository for my dotfiles in the HOME directory
+alias dotbare='/usr/bin/git --git-dir=/f/dotfiles --work-tree=$HOME'
+                                                                                
+# git                                                                           
+alias add='git add '                                                            
+alias addall='git add -A'                                                       
+alias branch='git branch'                                                       
+alias checkout='git checkout'                                                   
+alias clone='git clone'                                                         
+alias commit='git commit -m'                                                    
+alias fetch='git fetch'                                                         
+alias pull='git pull origin'                                                    
+alias pullm='git pull origin master'                                            
+alias push='git push origin'                                                    
+alias pushm='git push origin master'                                            
+alias gs='git status'                                                       
+                                                                                
+# Formated IP
+alias ipa='ip -br -c addr show'
+                                                                                
+# # ex = EXtractor for all kinds of archives                                    
+# # usage: ex <file>                                                            
+ex ()                                                                           
+{                                                                               
+  if [ -f $1 ] ; then                                                           
+    case $1 in                                                                  
+      *.tar.bz2)   tar xjf $1   ;;                                              
+      *.tar.gz)    tar xzf $1   ;;                                              
+      *.bz2)       bunzip2 $1   ;;                                              
+      *.rar)       unrar x $1   ;;                                              
+      *.gz)        gunzip $1    ;;                                              
+      *.tar)       tar xf $1    ;;                                              
+      *.tbz2)      tar xjf $1   ;;                                              
+      *.tgz)       tar xzf $1   ;;                                              
+      *.zip)       unzip $1     ;;                                              
+      *.Z)         uncompress $1;;                                              
+      *.7z)        7z x $1      ;;                                              
+      *.deb)       ar x $1      ;;                                              
+      *.tar.xz)    tar xf $1    ;;                                              
+      *)           echo "'$1' cannot be extracted via ex()" ;;                  
+    esac                                                                        
+  else                                                                          
+    echo "'$1' is not a valid file"                                             
+  fi                                                                            
+}
+
+#youtube-dl                                                                        
+alias yta-aac="youtube-dl --extract-audio --audio-format aac "                     
+alias yta-best="youtube-dl --extract-audio --audio-format best "                   
+alias yta-flac="youtube-dl --extract-audio --audio-format flac "                   
+alias yta-m4a="youtube-dl --extract-audio --audio-format m4a "                     
+alias yta-mp3="youtube-dl --extract-audio --audio-format mp3 "                     
+alias yta-opus="youtube-dl --extract-audio --audio-format opus "                   
+alias yta-vorbis="youtube-dl --extract-audio --audio-format vorbis "               
+alias yta-wav="youtube-dl --extract-audio --audio-format wav "                     
+                                                                                   
+alias ytv-best="youtube-dl -f bestvideo+bestaudio "
+
+#quickly kill conkies                                                           
+alias kc='killall conky'
+
+#switch between bash and zsh
+alias tobash="sudo chsh $USER -s /bin/bash && echo 'Now log out.'"
+alias tozsh="sudo chsh $USER -s /bin/zsh && echo 'Now log out.'"
