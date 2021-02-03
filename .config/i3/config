@@ -1,8 +1,8 @@
 #@author:       rhofp <rhodfra@gmail.com>
 #@date:         01/02/2021
 #@description:  Structure i3 config file
-#
-#
+
+
 #@Section: File structure explanation
 #
 # This file is struct as it follows
@@ -10,8 +10,8 @@
 # 2.  Variables declaration
 # 3.  Mandandatory configuration for navigating on i3 
 # 4.  User custom configurations
-#
-#
+
+
 ###############################################################################
 ###############################################################################
 ############            Start of all the settings               ###############
@@ -33,6 +33,14 @@
 
 
 ###############################################################################
+#########               Define the primary monitor                #############
+###############################################################################
+
+# Defining a primary monitor is usefull for the trayicons
+set $primary-monitor LVDS1
+
+
+###############################################################################
 ###########               Define the $mod variable/key             ############
 ###############################################################################
 
@@ -49,17 +57,6 @@ set $mod Mod4
 
 
 ###############################################################################
-###########           reload changed configuration            #################
-###############################################################################
-
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
-
-# reload the configuration file
-bindsym $mod+Shift+c reload
-
-
-###############################################################################
 #########             Define the movements keys - variables       #############
 ###############################################################################
 
@@ -71,6 +68,33 @@ set $right l
 
 # Default move keys layouts is the qwerty setup
 # qwerty setup: l k j semicolon
+
+
+###############################################################################
+#########         Define workspace names and icons                #############
+###############################################################################
+
+# This is usefull for i3bar 
+set $ws1 1
+set $ws2 2
+set $ws3 3
+set $ws4 4
+set $ws5 5
+set $ws6 6
+set $ws7 7
+set $ws8 8
+set $ws9 9
+set $ws10 10
+
+###############################################################################
+###########           reload changed configuration            #################
+###############################################################################
+
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+
+# reload the configuration file
+bindsym $mod+Shift+c reload
 
 
 ###############################################################################
@@ -110,40 +134,40 @@ floating_modifier $mod
 ###############################################################################
 
 # switch to workspace
-bindsym $mod+1 workspace 1
-bindsym $mod+2 workspace 2
-bindsym $mod+3 workspace 3
-bindsym $mod+4 workspace 4
-bindsym $mod+5 workspace 5
-bindsym $mod+6 workspace 6
-bindsym $mod+7 workspace 7
-bindsym $mod+8 workspace 8
-bindsym $mod+9 workspace 9
-bindsym $mod+0 workspace 10
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
 
 # move focused container to workspace
-bindsym $mod+Ctrl+1 move container to workspace 1
-bindsym $mod+Ctrl+2 move container to workspace 2
-bindsym $mod+Ctrl+3 move container to workspace 3
-bindsym $mod+Ctrl+4 move container to workspace 4
-bindsym $mod+Ctrl+5 move container to workspace 5
-bindsym $mod+Ctrl+6 move container to workspace 6
-bindsym $mod+Ctrl+7 move container to workspace 7
-bindsym $mod+Ctrl+8 move container to workspace 8
-bindsym $mod+Ctrl+9 move container to workspace 9
-bindsym $mod+Ctrl+0 move container to workspace 10
+bindsym $mod+Ctrl+1 move container to workspace $ws1
+bindsym $mod+Ctrl+2 move container to workspace $ws2
+bindsym $mod+Ctrl+3 move container to workspace $ws3
+bindsym $mod+Ctrl+4 move container to workspace $ws4
+bindsym $mod+Ctrl+5 move container to workspace $ws5
+bindsym $mod+Ctrl+6 move container to workspace $ws6
+bindsym $mod+Ctrl+7 move container to workspace $ws7
+bindsym $mod+Ctrl+8 move container to workspace $ws8
+bindsym $mod+Ctrl+9 move container to workspace $ws9
+bindsym $mod+Ctrl+0 move container to workspace $ws10
 
 # move to workspace with focused container
-bindsym $mod+Shift+1 move container to workspace 1; workspace 1
-bindsym $mod+Shift+2 move container to workspace 2; workspace 2
-bindsym $mod+Shift+3 move container to workspace 3; workspace 3
-bindsym $mod+Shift+4 move container to workspace 4; workspace 4
-bindsym $mod+Shift+5 move container to workspace 5; workspace 5
-bindsym $mod+Shift+6 move container to workspace 6; workspace 6
-bindsym $mod+Shift+7 move container to workspace 7; workspace 7
-bindsym $mod+Shift+8 move container to workspace 8; workspace 8
-bindsym $mod+Shift+9 move container to workspace 9; workspace 9
-bindsym $mod+Shift+0 move container to workspace 10; workspace 10
+bindsym $mod+Shift+1 move container to workspace $ws1; workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2; workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3; workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4; workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5; workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6; workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7; workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8; workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9; workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10; workspace $ws10
 
 
 ###############################################################################
@@ -156,10 +180,7 @@ workspace_auto_back_and_forth yes
 
 bindsym $mod+Tab workspace back_and_forth
 
-bindsym $mod+Shift+Tab workspace next
-
 #navigate workspaces next / previous
-
 bindsym $mod+Ctrl+$right workspace next
 bindsym $mod+Ctrl+$left workspace prev
 
@@ -405,13 +426,11 @@ bindsym $mod+Shift+e exec --no-startup-id arcolinux-logout
 ###########                Single and Dual screen               ###############
 ###############################################################################
 
-set $lmonitor LVDS1
-
 # use xrandr and/or arandr to know the names of your monitors
 # use this line to tell which monitor is on the right
 # xrandr --output DVI-I-2 --right-of DVI-I-1 --auto
 
-exec --no-startup-id xrandr --output $lmonitor --primary
+exec --no-startup-id xrandr --output $primary-monitor --primary
 
 # Focus the right monitor
 bindsym $mod+period focus output right
@@ -681,6 +700,7 @@ bindsym $mod+x exec --no-startup-id evince; focus
 
 # viewnior
 bindsym $mod+n exec --no-startup-id viewnior; focus
+for_window [class="Viewnior"] floating enable
 
 #pavucontrol
 bindsym $mod+p exec --no-startup-id pavucontrol
@@ -691,8 +711,11 @@ bindsym $mod+p exec --no-startup-id pavucontrol
 
 # Screenshot with flameshot
 bindsym $mod+c exec --no-startup-id flameshot gui
-#TODO:- Add more
-bindsym Print exec --no-startup-id flameshot full -p $HOME/Pictures 
+bindsym Print exec --no-startup-id flameshot full -p /f/screenshots 
+
+# This two binds work in a dual space layout
+bindsym $mod+Print exec --no-startup-id flameshot screen -n 0 -p /f/screenshots 
+bindsym $mod+Shift+Print exec --no-startup-id flameshot screen -n 1 -p /f/screenshots 
 
 # NOT USED
 #bindsym Print exec --no-startup-id scrot 'ArcoLinux-%Y-%m-%d-%s_screenshot_$wx$h.jpg' -e 'mv $f $$(xdg-user-dir PICTURES)'
@@ -709,37 +732,22 @@ bindsym Print exec --no-startup-id flameshot full -p $HOME/Pictures
 ###############################################################################
 
 # Browser related
+# Firefox
+bindsym $mod+w exec --no-startup-id exo-open --launch webbrowser;focus
 assign [class="firefox|Firefox"]                                        → 2
 for_window [class="firefox|Firefox"] focus
 
-#assign [class="Vivaldi-stable|Vivaldi-snapshot"]                        → 2
-#for_window [class="Vivaldi-stable|Vivaldi-snapshot"] focus
-
-#assign [class="Chromium|Google-chrome|Opera"]                          → 2
-#for_window [class="Opera"] focus
-
-#qwerty/azerty conflict with w
-bindsym $mod+w exec --no-startup-id exo-open --launch webbrowser;focus
-bindsym $mod+Shift+w exec --no-startup-id vivaldi-stable;focus
 
 ###############################################################################
 #######                         Workspace 3                          ##########
 ###############################################################################
 
 # Text editor related
+# Visual Studio Code 
+bindsym $mod+b exec --no-startup-id code;focus
 assign [class="Code|code-oss"]                                          → 3
 for_window [class="Code|code-oss"] focus                    
 
-assign [class="sublime-text|sublime_text|Sublime_text"]                 → 3
-for_window [class="sublime-text|sublime_text|Sublime_text"] focus 
-for_window [class="subl|Subl|subl3|Subl3"] focus 
-
-assign [class="subl|Subl|subl3|Subl3"]                                  → 3
-assign [class="Xed|xed|Brackets|Atom|Geany"]                            → 3
-for_window [class="Xed|xed|Brackets|Atom|Geany"] focus                    
-
-# Visual Studio Code 
-bindsym $mod+b exec --no-startup-id code;focus
 
 ###############################################################################
 #######                         Workspace 4                          ##########
@@ -751,11 +759,10 @@ bindsym $mod+b exec --no-startup-id code;focus
 ###############################################################################
 
 # Markdown/asciidoc editors  
-assign [class="Typora"]    → 4
-for_window [class="Typora"] focus
-
 # typora
 bindsym $mod+i exec --no-startup-id typora; focus
+assign [class="Typora"]    → 5
+for_window [class="Typora"] focus
 
 
 ###############################################################################
@@ -763,8 +770,9 @@ bindsym $mod+i exec --no-startup-id typora; focus
 ###############################################################################
 
 # dolphin
-assign [class="dolphin"]    → 6
 bindsym $mod+o exec --no-startup-id dolphin; focus
+assign [class="dolphin"]    → 6
+for_window [class="dolphin"] focus 
 
 
 ###############################################################################
@@ -788,6 +796,11 @@ for_window [class="rclone-browser"] focus
 assign [class="Brave-browser"]                                          → 8
 for_window [class="Brave-browser"] focus
 
+assign [class="Vivaldi-stable|Vivaldi-snapshot"]                        → 8
+for_window [class="Vivaldi-stable|Vivaldi-snapshot"] focus
+#qwerty/azerty conflict with w
+bindsym $mod+Shift+w exec --no-startup-id vivaldi-stable;focus
+
 # Add virtualbox
 
 ###############################################################################
@@ -796,13 +809,16 @@ for_window [class="Brave-browser"] focus
 
 # Workspace 9 all messaging related software
 assign [class="TelegramDesktop|Slack"]   → 9
+for_window [class="TelegramDesktop|Slack"] focus 
+
 assign [class="whatsapp-nativefier-d40211"] → 9
+for_window [class="whatsapp-nativefier-d40211"] focus 
+
 assign [class="facebookmessenger-nativefier-7ab88e"]  → 9
+for_window [class="facebookmessenger-nativefier-7ab88e"] focus
+
 assign [class="facebook-nativefier-d58ff9"]                     → 9
-for_window [class="whatsapp-nativefier-d40211"] focus   
-for_window [class="TelegramDesktop"] focus   
-for_window [class="Slack"] focus   
-for_window [class="facebookmessenger-nativefier-7ab88e"] focus   
+for_window [class="facebook-nativefier-d58ff9"] focus 
 
 assign [class="mailspring"]   → 9
 for_window [class="mailspring"] focus   
@@ -812,8 +828,9 @@ for_window [class="mailspring"] focus
 ###############################################################################
 
 # Workspace 10 music related
+# Spotify Music
+bindsym $mod+Shift+s exec --no-startup-id spotify;focus
 assign [class="Spotify|spotify"]                                       → 10
-
 for_window [class="Spotify"] move to workspace 10
 for_window [class="Spotify"] focus
 
@@ -823,8 +840,6 @@ for_window [class="draw.io"] focus
 assign [class="obs"]                                                   → 10
 for_window [class="obs"] focus
 
-# Spotify Music
-bindsym $mod+Shift+s exec --no-startup-id spotify;focus
 
 ###############################################################################
 ############            applications keyboard shortcuts        ################
@@ -908,6 +923,7 @@ bindsym control+mod1+a exec --no-startup-id xfce4-appfinder
 #########                   editing config files                ###############
 ###############################################################################
 
+#TODO:- Change it to a dmenu script
 bindsym $mod+F5 exec --no-startup-id alacritty -e nvim ~/.config/i3/config
 bindsym $mod+F6 exec --no-startup-id alacritty -e nvim ~/.vimrc
 bindsym $mod+F7 exec --no-startup-id alacritty -e nvim ~/.config/polybar/config
