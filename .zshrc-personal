@@ -74,6 +74,7 @@ alias sr="sudo reboot"
 
 # Git bare repository for my dotfiles in the HOME directory
 alias dotbare='/usr/bin/git --git-dir=/f/dotfiles --work-tree=$HOME'
+alias dot='dotbare'
                                                                                 
 # git                                                                           
 alias add='git add '                                                            
