@@ -106,6 +106,8 @@ set $ws8 8
 set $ws9 9
 set $ws0 0
 
+# Set directory to save screenshots taken from flameshot
+set $screenshots-dir /f/screenshots
 
 ###############################################################################
 ############                  Font and colors                   ###############
@@ -139,6 +141,14 @@ bindsym $mod+Shift+r restart
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
+
+
+###############################################################################
+############          Stopping an application                   ###############
+###############################################################################
+
+# kill focused window
+bindsym $mod+Shift+q kill
 
 
 ###############################################################################
@@ -269,7 +279,6 @@ popup_during_fullscreen smart
 ############                border control                      ###############
 ###############################################################################
 
-
 # Border control
 hide_edge_borders both
 
@@ -317,6 +326,52 @@ bindsym $mod+Shift+minus move scratchpad
 # Show the next scratchpad window or hide the focused scratchpad window.
 # If there are multiple scratchpad windows, this command cycles through them.
 bindsym $mod+minus scratchpad show
+
+
+###############################################################################
+##########                xbacklight                          #################
+###############################################################################
+
+# Increase screen brightness
+bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 5 
+# Decrease screen brightness
+bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 5 
+
+
+###############################################################################
+###########                   audio settings                     ##############
+###############################################################################
+
+bindsym XF86AudioRaiseVolume exec --no-startup-id \
+  "amixer -D pulse sset Master '5%+'"
+bindsym XF86AudioLowerVolume exec --no-startup-id \
+  "amixer -D pulse sset Master '5%-'"
+bindsym XF86AudioMute exec --no-startup-id \
+  "amixer -D pulse set Master toggle"
+
+#https://github.com/acrisci/playerctl/
+bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
+bindsym XF86AudioNext exec --no-startup-id playerctl next
+bindsym XF86AudioPrev exec --no-startup-id playerctl previous
+bindsym XF86AudioStop exec --no-startup-id playerctl stop
+
+# IMPORTANT: For using this put every sentence in a single line 
+# (They most be 4 in total)
+#bindsym XF86AudioPlay exec --no-startup-id "dbus-send --print-reply
+#--dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2
+#org.mpris.MediaPlayer2.Player.PlayPause" 
+#
+#bindsym XF86AudioNext exec
+#--no-startup-id "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify
+#/org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next"
+#
+#bindsym XF86AudioPrev exec --no-startup-id "dbus-send --print-reply
+#--dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2
+#org.mpris.MediaPlayer2.Player.Previous" 
+#
+#bindsym XF86AudioStop exec
+#--no-startup-id "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify
+# /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Stop"
 
 
 ###############################################################################
@@ -405,20 +460,26 @@ mode "$mode_gaps_outer" {
 #Press ctrl+alt+x - check toolbar for next choices
 bindsym control+mod1+X mode "$mode_system"
 
-set $mode_system System (k) lock, (l) logout, (u) suspend, (h) hibernate, (r) reboot, (s) shutdown
+set $mode_system System \
+  (k) lock, (l) logout, (u) suspend, (h) hibernate, (r) reboot, (s) shutdown
 mode "$mode_system" {
-    bindsym k exec --no-startup-id ~/.config/i3/scripts/i3exit.sh lock, mode "default"
-    bindsym l exec --no-startup-id ~/.config/i3/scripts/i3exit.sh logout, mode "default"
-    bindsym u exec --no-startup-id ~/.config/i3/scripts/i3exit.sh suspend, mode "default"
-    bindsym h exec --no-startup-id ~/.config/i3/scripts/i3exit.sh hibernate, mode "default"
-    bindsym r exec --no-startup-id ~/.config/i3/scripts/i3exit.sh reboot, mode "default"
-    bindsym s exec --no-startup-id ~/.config/i3/scripts/i3exit.sh shutdown, mode "default"
+    bindsym k exec --no-startup-id \
+      ~/.config/i3/scripts/i3exit.sh lock, mode "default"
+    bindsym l exec --no-startup-id \
+      ~/.config/i3/scripts/i3exit.sh logout, mode "default"
+    bindsym u exec --no-startup-id \
+      ~/.config/i3/scripts/i3exit.sh suspend, mode "default"
+    bindsym h exec --no-startup-id \
+      ~/.config/i3/scripts/i3exit.sh hibernate, mode "default"
+    bindsym r exec --no-startup-id \
+    ~/.config/i3/scripts/i3exit.sh reboot, mode "default"
+    bindsym s exec --no-startup-id \
+      ~/.config/i3/scripts/i3exit.sh shutdown, mode "default"
 
     # back to normal: Enter or Escape
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
-
 
 # ArcoLinux Logout
 bindsym $mod+Shift+e exec --no-startup-id arcolinux-logout
@@ -451,170 +512,27 @@ bindsym $mod+F12 exec --no-startup-id sh /f/scripts/screenlayout/extendedR.sh
 
 
 ###############################################################################
-##########                xbacklight                          #################
-###############################################################################
-
-# Increase screen brightness
-bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 5 
-# Decrease screen brightness
-bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 5 
-
-
-###############################################################################
-############              4 menu's in arcolinux                     ###########
+############                 Program launchers                      ###########
 ###############################################################################
 
 # Tiling window managers hardly come with a program laucher so it has to
 # be install independly
-# Following configuration need to have install
-# rofi, xfce-appfinder, morc_menu, gmrun and dmenu
-# In that order
-# @dependency: rofi,morc_menu, gmrun, dmenu
 
-# Rofi program laucher
+# program laucher: rof
 bindsym $mod+d exec --no-startup-id rofi -show run -font "Noto Sans 13"
-# Rofi open window switcher
+# opened window laucher: rofi 
 bindsym $mod+shift+d exec --no-startup-id rofi -show window -font "Noto Sans 13"
-
-# start xfce-appfinder
+# xfce-appfinder
 bindsym $mod+F2 exec --no-startup-id xfce4-appfinder
-
 # morc_menu
 bindsym $mod+F3 exec --no-startup-id morc_menu
-
 # gmrun
 #bindsym $mod+F4 exec --no-startup-id gmrun
 
-# start dmenu
-# Normally dmenu + i3 is the standard commbination
-#bindsym $mod+d exec --no-startup-id dmenu_run -i -nb '#191919' -nf '#fea63c' -sb '#fea63c' -sf '#191919' -fn 'NotoMonoRegular:bold:pixelsize=14'
-
-
-###############################################################################
-############          Stopping an application                   ###############
-###############################################################################
-
-# kill focused window
-bindsym $mod+Shift+q kill
-
-
-###############################################################################
-###############################################################################
-###############################################################################
-## bootup applications, tray icons and system setting and float/tile config ###
-###############################################################################
-###############################################################################
-###############################################################################
-
-
-###############################################################################
-###########                   audio settings                     ##############
-###############################################################################
-
-bindsym XF86AudioRaiseVolume exec --no-startup-id "amixer -D pulse sset Master '5%+'"
-bindsym XF86AudioLowerVolume exec --no-startup-id "amixer -D pulse sset Master '5%-'"
-bindsym XF86AudioMute exec --no-startup-id "amixer -D pulse set Master toggle"
-#https://github.com/acrisci/playerctl/
-bindsym XF86AudioPlay exec --no-startup-id playerctl play-pause
-bindsym XF86AudioNext exec --no-startup-id playerctl next
-bindsym XF86AudioPrev exec --no-startup-id playerctl previous
-bindsym XF86AudioStop exec --no-startup-id playerctl stop
-#bindsym XF86AudioPlay exec --no-startup-id "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause"
-#bindsym XF86AudioNext exec --no-startup-id "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next"
-#bindsym XF86AudioPrev exec --no-startup-id "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous"
-#bindsym XF86AudioStop exec --no-startup-id "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Stop"
-
-
-###############################################################################
-#########             system applications                       ###############
-###############################################################################
-
-exec --no-startup-id xfce4-power-manager &
-# ommitted next line to get super key to bring up the menu in xfce and avoid 
-# error then in i3
-# IF xfsettingsd is activated you can not change themes
-#exec --no-startup-id xfsettingsd &
-exec --no-startup-id /usr/lib/xfce4/notifyd/xfce4-notifyd &
-
-# ArcoLinux Welcome App
-exec --no-startup-id dex $HOME/.config/autostart/arcolinux-welcome-app.desktop
-
-# Autotiling
-#exec_always --no-startup-id autotiling
-
-# Polybar
-exec_always --no-startup-id ~/.config/polybar/launch.sh &
-
-# Exec terminal on start
-exec --no-startup-id alacritty
-
-###############################################################################
-##########                picom of i3wm                         ###############
-###############################################################################
-
-#if you want transparency on non-focused windows, ...
-#exec_always --no-startup-id picom --config ~/.config/i3/picom.conf
-
-#bindsym control+mod1+o exec --no-startup-id ~/.config/i3/scripts/picom-toggle.sh
-
-
-###############################################################################
-#####       autostart   - execute trayicons at boot time           ############
-###############################################################################
-
-# TRAY APPLICATIONS
-
-# applications that are not installed will not start
-# you may see a wheel - hashtag out things you do not want
-
-#Authentication dialog
-exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
-
-# network
-exec --no-startup-id nm-applet
-
-# volume
-#exec --no-startup-id pasystray
-exec --no-startup-id volumeicon
-
-# num lock activated
-#exec_always --no-startup-id numlockx on
-
-#variety
-#exec --no-startup-id variety
-
-#flameshot
-exec --no-startup-id flameshot
-
-# clipman
-#exec --no-startup-id xfce4-clipman
-
-# Updater
-#exec --no-startup-id pamac-tray
-
-# bluetooth
-#exec --no-startup-id blueberry-tray
-
-# dropbox
-#exec --no-startup-id dropbox start
-
-# insync
-#exec --no-startup-id insync start
-
-#Conky
-#exec --no-startup-id conky -c ~/.config/i3/system-overview
-
-#feh sets wallpaper
-exec --no-startup-id feh --bg-fill /home/rodrigo/.images/iceland.jpg &
-
-
-###############################################################################
-###############################################################################
-###############################################################################
-#########     Desktop environment programs config (floating/tiling)     #######
-###############################################################################
-###############################################################################
-###############################################################################
+# dmenu: normally dmenu + i3 is the standard commbination
+#bindsym $mod+d exec --no-startup-id dmenu_run -i -nb \
+#'#191919' -nf '#fea63c' -sb '#fea63c' -sf '#191919' -fn \
+#'NotoMonoRegular:bold:pixelsize=14'
 
 
 ###############################################################################
@@ -625,34 +543,29 @@ exec --no-startup-id feh --bg-fill /home/rodrigo/.images/iceland.jpg &
 
 for_window [class="Arcolinux-welcome-app.py"] floating enable
 #for_window [class="Arcolinux-tweak-tool.py"] floating enable
-for_window [class="Bleachbit"] floating disable
 for_window [class="Blueberry.py"] floating enable
-for_window [class="Brasero"] floating disable
 for_window [class="Galculator"] floating enable
-for_window [class="Gnome-disks"] floating disable
 for_window [class="^Gnome-font-viewer$"] floating enable
-for_window [class="^Gpick$"] floating enable
-for_window [class="Hexchat"] floating disable
 for_window [class="Imagewriter"] floating enable
 for_window [class="Font-manager"] floating enable
-#for_window [class="qt5ct|Lxappearance] floating enable
-for_window [class="Nitrogen"] floating disable
-for_window [class="Pavucontrol"] floating enable
+for_window [class="^Gpick$"] floating enable
 for_window [class="Peek"] floating enable
-for_window [class="^Skype$"] floating enable                  # Check
-for_window [class="^Spotify$"] floating disable               # Check
-for_window [class="System-config-printer.py"] floating enable
 for_window [class="Unetbootin.elf"] floating enable
 for_window [class="Usb-creator-gtk"] floating enable
-for_window [class="^Vlc$"] floating disable                   # Check
+for_window [class="System-config-printer.py"] floating enable
+for_window [class="Xfce4-appfinder"] floating enable
+for_window [class="Xfce4-taskmanager"] floating enable
+#for_window [class="qt5ct|Lxappearance] floating enable
+for_window [class="Bleachbit"] floating disable
+for_window [class="Brasero"] floating disable
+for_window [class="Gnome-disks"] floating disable
+for_window [class="Hexchat"] floating disable
+for_window [class="Nitrogen"] floating disable
 for_window [class="Wine"] floating disable
 for_window [class="Xfburn"] floating disable
-for_window [class="Xfce4-appfinder"] floating enable
 for_window [class="Xfce4-settings-manager"] floating disable
-for_window [class="Xfce4-taskmanager"] floating enable
 
-
-#for_window [instance="gimp"] floating disable                # Check
+#for_window [instance="gimp"] floating disable             
 for_window [instance="script-fu"] border normal
 for_window [instance="variety"] floating disable
 
@@ -661,29 +574,11 @@ for_window [title="Deleting"] floating enable
 for_window [title="Moving"] floating enable
 for_window [title="^Terminator Preferences$"] floating enable
 
-
 #for_window [window_role="^gimp-toolbox-color-dialog$"] floating enable
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="^Preferences$"] floating enable
 for_window [window_role="setup"] floating enable
 
-################################################################################
-############            give focus to applications               ###############
-################################################################################
-
-for_window [class="Gnome-terminal"] focus
-for_window [class="Termite"] focus
-for_window [class="Alacritty"] focus
-for_window [class="Terminator"] focus
-
-
-###############################################################################
-###############################################################################
-###############################################################################
-#########                       User application                        #######
-###############################################################################
-###############################################################################
-###############################################################################
 
 ###############################################################################
 #######    assign, focus and shortcuts applications to workspaces    ##########
@@ -696,11 +591,18 @@ for_window [class="Terminator"] focus
 #######               None particular workspace                      ##########
 ###############################################################################
 
-# terminal
+# terminal: alacritty
 bindsym $mod+Return exec --no-startup-id alacritty;focus
+for_window [class="Alacritty"] focus
+
+# terminal: termite
 bindsym $mod+Shift+Return exec --no-startup-id termite;focus
+for_window [class="Termite"] focus
+
+# terminal: konsole
 bindsym $mod+Control+Return exec --no-startup-id konsole;focus
 for_window [class="konsole"] floating enable
+for_window [class="konsole"] focus
 
 #xkill
 bindsym --release $mod+Escape exec xkill
@@ -714,6 +616,14 @@ for_window [class="Viewnior"] floating enable
 
 #pavucontrol
 bindsym $mod+p exec --no-startup-id pavucontrol
+for_window [class="Pavucontrol"] floating enable
+
+#ArcoLinux Tweak Tool
+bindsym control+mod1+e exec --no-startup-id arcolinux-tweak-tool
+
+#settings
+bindsym control+mod1+m exec --no-startup-id xfce4-settings-manager
+
 
 ###############################################################################
 #############                   screenshots                       #############
@@ -721,28 +631,35 @@ bindsym $mod+p exec --no-startup-id pavucontrol
 
 # Screenshot with flameshot
 bindsym $mod+c exec --no-startup-id flameshot gui
-bindsym Print exec --no-startup-id flameshot full -p /f/screenshots 
+bindsym Print exec --no-startup-id flameshot full -p $screenshots-dir 
 
 # This two binds work in a dual space layout
-bindsym $mod+Print exec --no-startup-id flameshot screen -n 0 -p /f/screenshots 
-bindsym $mod+Shift+Print exec --no-startup-id flameshot screen -n 1 -p /f/screenshots 
+bindsym $mod+Print exec --no-startup-id flameshot screen -n 0 \
+  -p  $screenshots-dir
+bindsym $mod+Shift+Print exec --no-startup-id flameshot screen -n 1 \
+  -p $screenshots-dir
 
 # NOT USED
-#bindsym Print exec --no-startup-id scrot 'ArcoLinux-%Y-%m-%d-%s_screenshot_$wx$h.jpg' -e 'mv $f $$(xdg-user-dir PICTURES)'
-#bindsym $mod+Print --release exec --no-startup-id scrot -s 'ArcoLinux-%Y-%m-%d-%s_screenshot_$wx$h.jpg' -e 'mv $f $$(xdg-user-dir PICTURES)'     
+#bindsym Print exec --no-startup-id scrot \
+#  'ArcoLinux-%Y-%m-%d-%s_screenshot_$wx$h.jpg' -e 
+#  'mv $f $$(xdg-user-dir PICTURES)'
+#bindsym $mod+Print --release exec --no-startup-id scrot -s 
+#  'ArcoLinux-%Y-%m-%d-%s_screenshot_$wx$h.jpg' -e 
+#  'mv $f $$(xdg-user-dir PICTURES)'     
 #bindsym Control+Print exec --no-startup-id xfce4-screenshooter
 #bindsym Control+Shift+Print exec --no-startup-id gnome-screenshot -i
 
 ###############################################################################
 #######                         Workspace 1                          ##########
 ###############################################################################
+#
+# I usually place terminal
 
 ###############################################################################
 #######                         Workspace 2                          ##########
 ###############################################################################
 
-# Browser related
-# Firefox
+# browser :firefox
 bindsym $mod+w exec --no-startup-id exo-open --launch webbrowser;focus
 assign [class="firefox|Firefox"]                                        → 2
 for_window [class="firefox|Firefox"] focus
@@ -762,18 +679,14 @@ for_window [class="Code|code-oss"] focus
 ###############################################################################
 #######                         Workspace 4                          ##########
 ###############################################################################
-
+#
+# I usually place pdf visors here
 
 ###############################################################################
 #######                         Workspace 5                          ##########
 ###############################################################################
 
-# Markdown/asciidoc editors  
-# typora
-bindsym $mod+i exec --no-startup-id typora; focus
-assign [class="Typora"]    → 5
-for_window [class="Typora"] focus
-
+assign [class="virtualbox"]                                             → 6
 
 ###############################################################################
 #######                         Workspace 6                          ##########
@@ -781,7 +694,7 @@ for_window [class="Typora"] focus
 
 # dolphin
 bindsym $mod+o exec --no-startup-id dolphin; focus
-assign [class="dolphin"]    → 6
+assign [class="dolphin"]                                                → 6
 for_window [class="dolphin"] focus 
 
 
@@ -791,46 +704,42 @@ for_window [class="dolphin"] focus
 
 # All videoconference related software
 assign [class="zoom|Skype"]                                             → 7
+for_window [class="^Skype$"] floating enable                
 for_window [class="zoom"] focus   
 
-# Add Vlc 
+assign [class="Vlc"]                                                    → 7
+for_window [class="^Vlc$"] floating disable                  
 
 ###############################################################################
 #######                         Workspace 8                          ##########
 ###############################################################################
 
-# All rclone related software
-assign [class="rclone-browser"]   	                                    → 8
-for_window [class="rclone-browser"] focus  
-
 assign [class="Brave-browser"]                                          → 8
 for_window [class="Brave-browser"] focus
 
+bindsym $mod+Shift+w exec --no-startup-id vivaldi-stable;focus
 assign [class="Vivaldi-stable|Vivaldi-snapshot"]                        → 8
 for_window [class="Vivaldi-stable|Vivaldi-snapshot"] focus
-#qwerty/azerty conflict with w
-bindsym $mod+Shift+w exec --no-startup-id vivaldi-stable;focus
 
-# Add virtualbox
 
 ###############################################################################
 #######                         Workspace 9                          ##########
 ###############################################################################
 
 # Workspace 9 all messaging related software
-assign [class="TelegramDesktop|Slack"]   → 9
+assign [class="TelegramDesktop|Slack"]                                  → 9
 for_window [class="TelegramDesktop|Slack"] focus 
 
-assign [class="whatsapp-nativefier-d40211"] → 9
+assign [class="whatsapp-nativefier-d40211"]                             → 9
 for_window [class="whatsapp-nativefier-d40211"] focus 
 
-assign [class="facebookmessenger-nativefier-7ab88e"]  → 9
+assign [class="facebookmessenger-nativefier-7ab88e"]                    → 9
 for_window [class="facebookmessenger-nativefier-7ab88e"] focus
 
-assign [class="facebook-nativefier-d58ff9"]                     → 9
+assign [class="facebook-nativefier-d58ff9"]                             → 9
 for_window [class="facebook-nativefier-d58ff9"] focus 
 
-assign [class="mailspring"]   → 9
+assign [class="mailspring"]                                             → 9
 for_window [class="mailspring"] focus   
 
 ###############################################################################
@@ -843,91 +752,13 @@ bindsym $mod+Shift+s exec --no-startup-id spotify;focus
 assign [class="Spotify|spotify"]                                       → 10
 for_window [class="Spotify"] move to workspace 10
 for_window [class="Spotify"] focus
+for_window [class="^Spotify$"] floating disable              
 
 assign [class="draw.io"]                                               → 10
 for_window [class="draw.io"] focus
 
 assign [class="obs"]                                                   → 10
 for_window [class="obs"] focus
-
-
-###############################################################################
-############            applications keyboard shortcuts        ################
-###############################################################################
-
-#not workspace related
-
-#ArcoLinux Welcome App
-#bindsym control+mod1+w exec --no-startup-id arcolinux-welcome-app
-
-#ArcoLinux Tweak Tool
-bindsym control+mod1+e exec --no-startup-id arcolinux-tweak-tool
-
-#System monitor
-bindsym control+Shift+Escape exec --no-startup-id xfce4-taskmanager;focus
-
-#settings
-bindsym control+mod1+m exec --no-startup-id xfce4-settings-manager
-
-#catfish
-#bindsym control+mod1+c exec --no-startup-id catfish;focus
-
-#arcolinux-logout
-bindsym control+mod1+k exec --no-startup-id arcolinux-logout
-bindsym control+mod1+l exec --no-startup-id arcolinux-logout
-
-#rofi theme selector
-#bindsym control+mod1+r exec --no-startup-id rofi-theme-selector
-
-#arcolinux conflict
-#bindsym $mod+m exec --no-startup-id pragha;focus
-
-#htop
-#arcolinux conflict
-#bindsym $mod+h exec --no-startup-id htop;focus
-
-# start xfce-appfinder
-#arcolinux does not seem to work
-bindsym control+mod1+a exec --no-startup-id xfce4-appfinder
-
-#pamac-manager
-#bindsym control+mod1+p exec --no-startup-id pamac-manager
-
-# Own scripts binding
-#bindsym $mod+o exec ~/.scripts/horario.sh
-#bindsym $mod+i workspace $ws4; exec ~/.scripts/study.bda.sh
-#bindsym $mod+g workspace $ws5; exec ~/.scripts/study.bdd.sh
-
-#workspace related
-
-#workspace 3 related
-#bindsym $mod+F3 exec --no-startup-id inkscape;focus
-
-#workspace 4 related
-#bindsym $mod+F4 exec --no-startup-id gimp;focus
-
-#workspace 5 related
-#bindsym $mod+F5 exec --no-startup-id meld;focus
-#bindsym control+mod1+i exec --no-startup-id nitrogen;focus
-
-#workspace 6 related
-#bindsym $mod+F6 exec --no-startup-id vlc;focus
-
-#workspace 7 related
-#bindsym $mod+F7 exec --no-startup-id virtualbox;focus
-
-#workspace 8 related
-#for_window [class="Thunar"] focus
-#bindsym $mod+F8 exec --no-startup-id thunar;focus
-#bindsym $mod+Shift+Return exec --no-startup-id thunar;focus
-#bindsym $mod+Shift+KP_Enter exec --no-startup-id thunar;focus
-#bindsym control+mod1+b exec --no-startup-id thunar;focus
-
-#workspace 9 related
-#bindsym $mod+F9 exec --no-startup-id evolution;focus
-#bindsym $mod+F9 exec --no-startup-id geary;focus
-#bindsym control+mod1+e exec --no-startup-id geary;focus
-
 
 ###############################################################################
 #########                   editing config files                ###############
@@ -940,16 +771,82 @@ bindsym $mod+F7 exec --no-startup-id alacritty -e nvim ~/.config/polybar/config
  
 
 ###############################################################################
+#####                    Autostart   at boot time                   ############
 ###############################################################################
+
+exec --no-startup-id xfce4-power-manager &
+# ommitted next line to get super key to bring up the menu in xfce and avoid 
+# error then in i3
+# IF xfsettingsd is activated you can not change themes
+#exec --no-startup-id xfsettingsd &
+exec --no-startup-id /usr/lib/xfce4/notifyd/xfce4-notifyd &
+
+# ArcoLinux Welcome App
+exec --no-startup-id dex $HOME/.config/autostart/arcolinux-welcome-app.desktop
+
+#Authentication dialog
+exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+
+#feh sets wallpaper
+exec --no-startup-id feh --bg-fill /home/rodrigo/.images/iceland.jpg &
+
+# Exec terminal on start
+exec --no-startup-id alacritty
+
+# Polybar
+exec_always --no-startup-id ~/.config/polybar/launch.sh &
+
+#Conky
+#exec --no-startup-id conky -c ~/.config/i3/system-overview
+
+# Settings of arcolinux will be applied
+#exec --no-startup-id setxkbmap be
+#exec --no-startup-id setxkbmap us
+
+# get the mouse out of the way with unclutter
+#exec --no-startup-id unclutter
+
+# Autotiling
+#exec_always --no-startup-id autotiling
+
+# transparency: picom
+#exec_always --no-startup-id picom --config ~/.config/i3/picom.conf
+
+
 ###############################################################################
+#####                    Trayicons   at boot time                   ############
 ###############################################################################
-###############################################################################
-####################               THE   END          #########################
-###############################################################################
-###############################################################################
-###############################################################################
-###############################################################################
-###############################################################################
+
+# network
+exec --no-startup-id nm-applet
+
+# volume
+#exec --no-startup-id pasystray
+exec --no-startup-id volumeicon
+
+#flameshot
+exec --no-startup-id flameshot
+
+# clipman
+#exec --no-startup-id xfce4-clipman
+
+#variety
+#exec --no-startup-id variety
+
+# Updater
+#exec --no-startup-id pamac-tray
+
+# num lock activated
+#exec_always --no-startup-id numlockx on
+
+# bluetooth
+#exec --no-startup-id blueberry-tray
+
+# dropbox
+#exec --no-startup-id dropbox start
+
+# insync
+#exec --no-startup-id insync start
 
 
 ###############################################################################
@@ -1080,23 +977,3 @@ bindsym $mod+F7 exec --no-startup-id alacritty -e nvim ~/.config/polybar/config
 # bindsym button9 move left
 # bindsym button8 move right
 
-
-###############################################################################
-#############             keyboard control                      ###############
-###############################################################################
-
-# NOT USED
-
-# Settings of arcolinux will be applied
-#exec --no-startup-id setxkbmap be
-#exec --no-startup-id setxkbmap us
-
-
-###############################################################################
-###########                 unclutter                           ###############
-###############################################################################
-
-# NOT USED
-
-# get the mouse out of the way with unclutter
-#exec --no-startup-id unclutter
