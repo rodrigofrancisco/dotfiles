@@ -1,16 +1,71 @@
-#@author:       rhofp <rhodfra@gmail.com>
-#@date:         01/02/2021
-#@description:  Structure i3 config file
-
-
-#@Section: File structure explanation
+# @author:       rhofp <rhodfra@gmail.com>
+# @version:      2.0
+# @date:         01/02/2021
+# @description:  Structure i3 config file
+#
+#
+# @Section: File structure explanation
 #
 # This file is struct as it follows
-# 1.  Usefull tips and key definition to remember
-# 2.  Variables declaration
-# 3.  Mandandatory configuration for navigating on i3 
-# 4.  User custom configurations
-
+# 0. File structure and explanation [This section]
+# 1. Recomendations, dependency and instructions to use
+# 2. Variables declaration
+# 3. Mandandatory configuration for navigating on i3 
+# 4. User custom configurations
+# 5. Transparency, autotiling and variety wallpaper config
+#    NOTE: By default this section is commented, uncomment as you like
+# 6. LEGACY COMMENTED settings
+#
+# @Section: Recomendations, dependency and instructions to use
+#
+# NOTE: My configuration was made and testing just in arcolinux, using xfce4
+# programs
+#
+# NOTE: I am currently using POLYBAR, so this settigs does not include i3bar
+#
+# @Subsection: Dependencies
+#
+# You may need to have the following programs 
+# - xbacklight
+# - amixer
+# - playerctl
+# - rofi 
+# - polkit-gnome-authentication-agent-1
+# - polybar
+# - xrandr 
+# - termite 
+# - alacritty 
+# - konsole 
+# - pavucontrol
+# - xkill 
+# - dmenu (highly recommend, but optional)
+# - feh
+# - nm-applet
+# - volumeicon
+# - flameshot 
+# - neovim
+# - evince 
+# - viewnior
+#
+# You need the scripts directory to use the $mode_system and the screen layout
+# to use dual monitor configuration
+#
+# Make sure to modify $primary-monitor variable to match your xrandr output
+# This configuration may work even if you don't have the program listed above,
+# but in a very primitive way.
+# 
+# The following keys shows names of common control keys for i3
+#
+# Mod4 :      Windows or Super key on keyboard
+# Mod1 :      ALT key
+# Control :   CTRL key
+# Shift :     SHIFT key
+# Escape :    ESCAPE key
+# Return :    ENTER or RETURN key
+# KP_Enter :  Keypad Enter
+# Pause :     PAUSE key
+# Print :     PRINT key
+# Tab :       TAB key
 
 ###############################################################################
 ###############################################################################
@@ -18,63 +73,28 @@
 ###############################################################################
 ###############################################################################
 
-# KEY DEFINITIONS TO REMEMBER
-
-# $Mod = WINDOWS key or Super key or Mod4
-# Mod1 = ALT key
-# Control = CTRL key
-# Shift = SHIFT key
-# Escape = ESCAPE key
-# Return = ENTER or RETURN key
-# KP_Enter = Keypad Enter
-# Pause = PAUSE key
-# Print = PRINT key
-# Tab = TAB key
-
 
 ###############################################################################
-#########               Define the primary monitor                #############
+########   Define variables (monitor,mod key, move keys, workspaces) ##########
 ###############################################################################
 
 # Defining a primary monitor is usefull for the trayicons
 set $primary-monitor LVDS1
 
-
-###############################################################################
-###########               Define the $mod variable/key             ############
-###############################################################################
-
-# Key to rule them all : Super(Windows) or Alt key?
-
-# Mod4 = Windows or Super key on keyboard
-# Mod1 = Alt key on keyboard
-
-#Set Alt key
-#set $mod Mod1
-
-#Set Super key
+# Set Super key or Windows key as the $MOD key for i3
 set $mod Mod4
 
-
-###############################################################################
-#########             Define the movements keys - variables       #############
-###############################################################################
-
-#This is vim like setup
+# Movements keys
+# This is vim like setup
+# NOTE: Default move keys is the qwerty setup : l k j semicolon
 set $up k
 set $down j
 set $left h
 set $right l
 
-# Default move keys layouts is the qwerty setup
-# qwerty setup: l k j semicolon
-
-
-###############################################################################
-#########         Define workspace names and icons                #############
-###############################################################################
-
-# This is usefull for i3bar 
+# Defining workspaces names 
+# (you can add icons here if you are using i3bar)
+# NOTE: This is usefull for i3bar 
 set $ws1 1
 set $ws2 2
 set $ws3 3
@@ -84,13 +104,37 @@ set $ws6 6
 set $ws7 7
 set $ws8 8
 set $ws9 9
-set $ws10 10
+set $ws0 0
+
+
+###############################################################################
+############                  Font and colors                   ###############
+###############################################################################
+
+# Font for window titles. Will also be used by the bar unless a different font
+# is used in the bar {} block below.
+# choose your font
+font pango:Noto Mono Regular 12
+
+#Theme name : ArcoLinux Default
+
+# Window color settings
+# class                 border  backgr. text    indicator
+client.focused          #6790EB #6790EB #e5e5e5 #6790EB
+client.unfocused        #222222 #222222 #aaaaaa #222222
+client.focused_inactive #222222 #222222 #a9a9a9 #222222
+client.placeholder      #222222 #222222 #aaaaaa #222222
+client.urgent           #d42121 #d42121 #f7f7f7 #d42121
+
+client.background       #242424
+
 
 ###############################################################################
 ###########           reload changed configuration            #################
 ###############################################################################
 
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+# restart i3 inplace 
+# (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 
 # reload the configuration file
@@ -107,12 +151,6 @@ bindsym $mod+$down focus down
 bindsym $mod+$up focus up
 bindsym $mod+$right focus right
 
-# alternatively, you can use the cursor keys:
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
-
 # move focused window
 bindsym $mod+Shift+$left move left
 bindsym $mod+Shift+$down move down
@@ -120,18 +158,28 @@ bindsym $mod+Shift+$up move up
 bindsym $mod+Shift+$right move right
 
 # alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
 bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
-# Use Mouse+$mod to drag floating windows to their wanted position
-floating_modifier $mod
-
 
 ###############################################################################
-#############                Define workspaces                #################
+#############                 Setup workspaces                #################
 ###############################################################################
+
+# Enable toggle to previous to next workspace
+workspace_auto_back_and_forth yes
+
+# switch to workspace with urgent window automatically
+for_window [urgent=latest] focus
+
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -143,7 +191,7 @@ bindsym $mod+6 workspace $ws6
 bindsym $mod+7 workspace $ws7
 bindsym $mod+8 workspace $ws8
 bindsym $mod+9 workspace $ws9
-bindsym $mod+0 workspace $ws10
+bindsym $mod+0 workspace $ws0
 
 # move focused container to workspace
 bindsym $mod+Ctrl+1 move container to workspace $ws1
@@ -155,7 +203,7 @@ bindsym $mod+Ctrl+6 move container to workspace $ws6
 bindsym $mod+Ctrl+7 move container to workspace $ws7
 bindsym $mod+Ctrl+8 move container to workspace $ws8
 bindsym $mod+Ctrl+9 move container to workspace $ws9
-bindsym $mod+Ctrl+0 move container to workspace $ws10
+bindsym $mod+Ctrl+0 move container to workspace $ws0
 
 # move to workspace with focused container
 bindsym $mod+Shift+1 move container to workspace $ws1; workspace $ws1
@@ -167,16 +215,8 @@ bindsym $mod+Shift+6 move container to workspace $ws6; workspace $ws6
 bindsym $mod+Shift+7 move container to workspace $ws7; workspace $ws7
 bindsym $mod+Shift+8 move container to workspace $ws8; workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9; workspace $ws9
-bindsym $mod+Shift+0 move container to workspace $ws10; workspace $ws10
+bindsym $mod+Shift+0 move container to workspace $ws0; workspace $ws0
 
-
-###############################################################################
-#############           moving around workspaces              #################
-###############################################################################
-
-
-# Enable toggle to previous to next workspace
-workspace_auto_back_and_forth yes
 
 bindsym $mod+Tab workspace back_and_forth
 
@@ -184,45 +224,99 @@ bindsym $mod+Tab workspace back_and_forth
 bindsym $mod+Ctrl+$right workspace next
 bindsym $mod+Ctrl+$left workspace prev
 
+# Alternatively, you can use the cursor keys:
 bindsym $mod+Ctrl+Right workspace next
 bindsym $mod+Ctrl+Left workspace prev
 
-# switch to workspace with urgent window automatically
-for_window [urgent=latest] focus
-
 
 ###############################################################################
-###########             Tiling parameters                     #################
+###########           Tiling and fullscreen config            #################
 ###############################################################################
 
 # default orientation for new workspaces
 default_orientation horizontal
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking
+bindsym $mod+z layout tabbed
+bindsym $mod+e layout toggle split
 
 # split in vertical orientation
 bindsym $mod+v split v
-
 # split in horizontal orientation
 bindsym $mod+Shift+v split h
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
 
 # enter fullscreen mode for the focused container
 # Super + F in arcolinux is execute thunar
 bindsym $mod+f fullscreen toggle
 
-# change container layout (stacked, tabbed, toggle split)
-# qwerty/azerty issue for letter z
-bindsym $mod+s layout stacking
-bindsym $mod+z layout tabbed
-bindsym $mod+e layout toggle split
+#Popups during fullscreen mode
+popup_during_fullscreen smart
 
 
-# change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+###############################################################################
+############                border control                      ###############
+###############################################################################
 
-# toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
 
-# focus the parent container
-bindsym $mod+a focus parent
+# Border control
+hide_edge_borders both
+
+#new_window pixel 1
+new_window normal
+#new_window none
+
+#new_float pixel 1
+new_float normal
+#new_float none
+
+#TODO:- Change this binding
+bindsym $mod+shift+b exec --no-startup-id i3-msg border toggle
+
+#changing border style
+bindsym $mod+t border normal
+bindsym $mod+y border 1pixel
+bindsym $mod+u border none
+
+
+###############################################################################
+##########                i3 gaps next                          ###############
+###############################################################################
+
+# Settings for I3 next gap git
+# https://github.com/Airblader/i3/tree/gaps-next
+# delete or uncomment the following lines if you do not have it or do not
+# want it
+
+
+for_window [class="^.*"] border pixel 2
+gaps inner 3
+gaps outer 3
+#smart_gaps on
+#smart_borders on
+
+
+###############################################################################
+########                  Scratchpad                            ###############
+###############################################################################
+
+# move the currently focused window to the scratchpad
+bindsym $mod+Shift+minus move scratchpad
+
+# Show the next scratchpad window or hide the focused scratchpad window.
+# If there are multiple scratchpad windows, this command cycles through them.
+bindsym $mod+minus scratchpad show
 
 
 ###############################################################################
@@ -256,57 +350,6 @@ mode "resize" {
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
-
-
-###############################################################################
-############                border control                      ###############
-###############################################################################
-
-
-# Border control
-hide_edge_borders both
-
-bindsym $mod+shift+b exec --no-startup-id i3-msg border toggle
-
-#changing border style
-#super+t in arcolinux is starting terminal
-bindsym $mod+t border normal
-bindsym $mod+y border 1pixel
-bindsym $mod+u border none
-
-
-#new_window pixel 1
-new_window normal
-#new_window none
-
-#new_float pixel 1
-new_float normal
-#new_float none
-
-
-###############################################################################
-########                   Popups  control                      ###############
-###############################################################################
-
-#Popups during fullscreen mode
-popup_during_fullscreen smart
-
-
-###############################################################################
-##########                i3 gaps next                          ###############
-###############################################################################
-
-# Settings for I3 next gap git
-# https://github.com/Airblader/i3/tree/gaps-next
-# delete or uncomment the following lines if you do not have it or do not
-# want it
-
-
-for_window [class="^.*"] border pixel 2
-gaps inner 5
-gaps outer 5
-#smart_gaps on
-#smart_borders on
 
 
 ###############################################################################
@@ -354,51 +397,10 @@ mode "$mode_gaps_outer" {
 
 
 ###############################################################################
-########                  Scratchpad                            ###############
-###############################################################################
-
-# move the currently focused window to the scratchpad
-bindsym $mod+Shift+minus move scratchpad
-
-# Show the next scratchpad window or hide the focused scratchpad window.
-# If there are multiple scratchpad windows, this command cycles through them.
-bindsym $mod+minus scratchpad show
-
-
-###############################################################################
-############              4 menu's in arcolinux                     ###########
-###############################################################################
-
-# Tiling window managers hardly come with a program laucher so it has to
-# be install independly
-# Following configuration need to have install
-# rofi, xfce-appfinder, morc_menu, gmrun and dmenu
-# In that order
-# @dependency: rofi,morc_menu, gmrun, dmenu
-
-# Rofi program laucher
-bindsym $mod+d exec --no-startup-id rofi -show run -font "Noto Sans 13"
-# Rofi open window switcher
-bindsym $mod+shift+d exec --no-startup-id rofi -show window -font "Noto Sans 13"
-
-# start xfce-appfinder
-bindsym $mod+F2 exec --no-startup-id xfce4-appfinder
-
-# morc_menu
-bindsym $mod+F3 exec --no-startup-id morc_menu
-
-# gmrun
-#bindsym $mod+F4 exec --no-startup-id gmrun
-
-# start dmenu
-# Normally dmenu + i3 is the standard commbination
-#bindsym $mod+d exec --no-startup-id dmenu_run -i -nb '#191919' -nf '#fea63c' -sb '#fea63c' -sf '#191919' -fn 'NotoMonoRegular:bold:pixelsize=14'
-
-
-###############################################################################
 ###########         how to exit, logoff, suspend, ...           ###############
 ###############################################################################
 
+#TODO:- Leave just method
 #Backup exit
 #Press ctrl+alt+x - check toolbar for next choices
 bindsym control+mod1+X mode "$mode_system"
@@ -449,37 +451,51 @@ bindsym $mod+F12 exec --no-startup-id sh /f/scripts/screenlayout/extendedR.sh
 
 
 ###############################################################################
+##########                xbacklight                          #################
+###############################################################################
+
+# Increase screen brightness
+bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 5 
+# Decrease screen brightness
+bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 5 
+
+
+###############################################################################
+############              4 menu's in arcolinux                     ###########
+###############################################################################
+
+# Tiling window managers hardly come with a program laucher so it has to
+# be install independly
+# Following configuration need to have install
+# rofi, xfce-appfinder, morc_menu, gmrun and dmenu
+# In that order
+# @dependency: rofi,morc_menu, gmrun, dmenu
+
+# Rofi program laucher
+bindsym $mod+d exec --no-startup-id rofi -show run -font "Noto Sans 13"
+# Rofi open window switcher
+bindsym $mod+shift+d exec --no-startup-id rofi -show window -font "Noto Sans 13"
+
+# start xfce-appfinder
+bindsym $mod+F2 exec --no-startup-id xfce4-appfinder
+
+# morc_menu
+bindsym $mod+F3 exec --no-startup-id morc_menu
+
+# gmrun
+#bindsym $mod+F4 exec --no-startup-id gmrun
+
+# start dmenu
+# Normally dmenu + i3 is the standard commbination
+#bindsym $mod+d exec --no-startup-id dmenu_run -i -nb '#191919' -nf '#fea63c' -sb '#fea63c' -sf '#191919' -fn 'NotoMonoRegular:bold:pixelsize=14'
+
+
+###############################################################################
 ############          Stopping an application                   ###############
 ###############################################################################
 
 # kill focused window
 bindsym $mod+Shift+q kill
-
-
-###############################################################################
-############                  choose the font                   ###############
-###############################################################################
-
-# Font for window titles. Will also be used by the bar unless a different font
-# is used in the bar {} block below.
-# choose your font
-font pango:Noto Mono Regular 13
-
-
-## START THEMING WM
-#Theme name : ArcoLinux Default
-
-# Window color settings
-# class                 border  backgr. text    indicator
-client.focused          #6790EB #6790EB #e5e5e5 #6790EB
-client.unfocused        #222222 #222222 #aaaaaa #222222
-client.focused_inactive #222222 #222222 #a9a9a9 #222222
-client.placeholder      #222222 #222222 #aaaaaa #222222
-client.urgent           #d42121 #d42121 #f7f7f7 #d42121
-
-client.background       #242424
-
-## STOP THEMING WM
 
 
 ###############################################################################
@@ -489,13 +505,6 @@ client.background       #242424
 ###############################################################################
 ###############################################################################
 ###############################################################################
-
-###############################################################################
-##########                xbacklight                          #################
-###############################################################################
-
-bindsym XF86MonBrightnessUp exec --no-startup-id xbacklight -inc 5 # increase screen brightness
-bindsym XF86MonBrightnessDown exec --no-startup-id xbacklight -dec 5 # decrease screen brightness
 
 
 ###############################################################################
@@ -531,7 +540,7 @@ exec --no-startup-id /usr/lib/xfce4/notifyd/xfce4-notifyd &
 exec --no-startup-id dex $HOME/.config/autostart/arcolinux-welcome-app.desktop
 
 # Autotiling
-exec_always --no-startup-id autotiling
+#exec_always --no-startup-id autotiling
 
 # Polybar
 exec_always --no-startup-id ~/.config/polybar/launch.sh &
@@ -691,6 +700,7 @@ for_window [class="Terminator"] focus
 bindsym $mod+Return exec --no-startup-id alacritty;focus
 bindsym $mod+Shift+Return exec --no-startup-id termite;focus
 bindsym $mod+Control+Return exec --no-startup-id konsole;focus
+for_window [class="konsole"] floating enable
 
 #xkill
 bindsym --release $mod+Escape exec xkill
