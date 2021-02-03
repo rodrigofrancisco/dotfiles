@@ -190,7 +190,6 @@ workspace_auto_back_and_forth yes
 # switch to workspace with urgent window automatically
 for_window [urgent=latest] focus
 
-
 # switch to workspace
 bindsym $mod+1 workspace $ws1
 bindsym $mod+2 workspace $ws2
@@ -226,7 +225,6 @@ bindsym $mod+Shift+7 move container to workspace $ws7; workspace $ws7
 bindsym $mod+Shift+8 move container to workspace $ws8; workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9; workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws0; workspace $ws0
-
 
 bindsym $mod+Tab workspace back_and_forth
 
@@ -308,7 +306,6 @@ bindsym $mod+u border none
 # delete or uncomment the following lines if you do not have it or do not
 # want it
 
-
 for_window [class="^.*"] border pixel 2
 gaps inner 3
 gaps outer 3
@@ -378,7 +375,6 @@ bindsym XF86AudioStop exec --no-startup-id playerctl stop
 ###########                     resize                          ###############
 ###############################################################################
 
-
 # resize window (you can also use the mouse for that)
 
 bindsym $mod+r mode "resize"
@@ -410,8 +406,6 @@ mode "resize" {
 ###############################################################################
 ##########               i3 gaps change                         ###############
 ###############################################################################
-
-
 
 set $mode_gaps Gaps: (o) outer, (i) inner
 set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
@@ -604,6 +598,10 @@ bindsym $mod+Control+Return exec --no-startup-id konsole;focus
 for_window [class="konsole"] floating enable
 for_window [class="konsole"] focus
 
+#pavucontrol
+bindsym $mod+p exec --no-startup-id pavucontrol
+for_window [class="Pavucontrol"] floating enable
+
 #xkill
 bindsym --release $mod+Escape exec xkill
 
@@ -614,14 +612,10 @@ bindsym $mod+x exec --no-startup-id evince; focus
 bindsym $mod+n exec --no-startup-id viewnior; focus
 for_window [class="Viewnior"] floating enable
 
-#pavucontrol
-bindsym $mod+p exec --no-startup-id pavucontrol
-for_window [class="Pavucontrol"] floating enable
-
 #ArcoLinux Tweak Tool
 bindsym control+mod1+e exec --no-startup-id arcolinux-tweak-tool
 
-#settings
+# settings
 bindsym control+mod1+m exec --no-startup-id xfce4-settings-manager
 
 
@@ -686,7 +680,7 @@ for_window [class="Code|code-oss"] focus
 #######                         Workspace 5                          ##########
 ###############################################################################
 
-assign [class="virtualbox"]                                             → 6
+assign [class="virtualbox"]                                             → 5
 
 ###############################################################################
 #######                         Workspace 6                          ##########
@@ -784,10 +778,10 @@ exec --no-startup-id /usr/lib/xfce4/notifyd/xfce4-notifyd &
 # ArcoLinux Welcome App
 exec --no-startup-id dex $HOME/.config/autostart/arcolinux-welcome-app.desktop
 
-#Authentication dialog
+# Authentication dialog
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 
-#feh sets wallpaper
+# feh sets wallpaper
 exec --no-startup-id feh --bg-fill /home/rodrigo/.images/iceland.jpg &
 
 # Exec terminal on start
@@ -796,7 +790,7 @@ exec --no-startup-id alacritty
 # Polybar
 exec_always --no-startup-id ~/.config/polybar/launch.sh &
 
-#Conky
+# Conky
 #exec --no-startup-id conky -c ~/.config/i3/system-overview
 
 # Settings of arcolinux will be applied
@@ -824,13 +818,13 @@ exec --no-startup-id nm-applet
 #exec --no-startup-id pasystray
 exec --no-startup-id volumeicon
 
-#flameshot
+# flameshot
 exec --no-startup-id flameshot
 
 # clipman
 #exec --no-startup-id xfce4-clipman
 
-#variety
+# variety
 #exec --no-startup-id variety
 
 # Updater
