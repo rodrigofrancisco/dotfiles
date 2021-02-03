@@ -1,0 +1,41 @@
+= Dotfiles
+Creado por Rodrigo Francisco <rhodfra@gmail.com>
+Version 1.0, 02.02.2021
+:description: Dotfiles configuracion
+//:keywords:
+//:sectnums:
+// Configuracion de la tabla de contenidos
+//:toc:
+//:toc-placement!:
+//:toclevels: 4
+//:toc-title: Contenido
+
+// Ruta base de las imagenes
+:imagesdir: ./README.assets/
+
+// Resaltar sintaxis
+:source-highlighter: pygments
+
+// Iconos para entorno local
+ifndef::env-github[:icons: font]
+
+// Iconos para entorno github
+ifdef::env-github[]
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+
+This are my dotfiles configurations.
+
+A dotfile is a Unix file starting with a dot (period) that saves the
+configuration for many of our Unix programs.
+
+== Backup technique
+
+I am using a _git bare repository_ to backup my dotfiles as suggested by DT on
+Youtube (https://www.youtube.com/watch?v=tBoLDpTWVOM&t=2s), whom at the same
+time is using the following article from Atlassian: 
+https://www.atlassian.com/git/tutorials/dotfiles
