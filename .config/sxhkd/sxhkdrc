@@ -1,0 +1,3 @@
+# Place glbal key bindings here
+# Make sure to place sxhkd -c $HOME/.config/sxhkd/sxhkdrc
+# in the ~/.xinirc file or in your window manager config file
