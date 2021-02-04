@@ -307,8 +307,8 @@ bindsym $mod+u border none
 # want it
 
 for_window [class="^.*"] border pixel 2
-gaps inner 3
-gaps outer 3
+gaps inner 2
+gaps outer 2
 #smart_gaps on
 #smart_borders on
 
@@ -677,12 +677,20 @@ for_window [class="Code|code-oss"] focus
 ###############################################################################
 #
 # I usually place pdf visors here
+bindsym $mod+Shift+x exec --no-startup-id okular; focus
+assign [class="okular"]                                                 → 4
+for_window [class="okular"] focus                    
 
 ###############################################################################
 #######                         Workspace 5                          ##########
 ###############################################################################
 
 assign [class="virtualbox"]                                             → 5
+assign [class="VirtualBox Manager"]                                     → 5
+assign [class="VirtualBox Machine"]                                     → 5
+for_window [class="VirtualBox Manager"] focus                    
+for_window [class="VirtualBox Machine"] focus                    
+
 
 ###############################################################################
 #######                         Workspace 6                          ##########
@@ -703,7 +711,8 @@ assign [class="zoom|Skype"]                                             → 7
 for_window [class="^Skype$"] floating enable                
 for_window [class="zoom"] focus   
 
-assign [class="Vlc"]                                                    → 7
+assign [class="vlc"]                                                    → 7
+for_window [class="vlc"] focus   
 for_window [class="^Vlc$"] floating disable                  
 
 
