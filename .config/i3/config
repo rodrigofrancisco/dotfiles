@@ -104,7 +104,7 @@ set $ws6 6
 set $ws7 7
 set $ws8 8
 set $ws9 9
-set $ws0 0
+set $ws0 10
 
 # Set directory to save screenshots taken from flameshot
 set $screenshots-dir /f/screenshots
@@ -538,7 +538,9 @@ bindsym $mod+F3 exec --no-startup-id morc_menu
 for_window [class="Arcolinux-welcome-app.py"] floating enable
 #for_window [class="Arcolinux-tweak-tool.py"] floating enable
 for_window [class="Blueberry.py"] floating enable
+for_window [class="Caja"] floating enable
 for_window [class="Galculator"] floating enable
+for_window [class="Qalculate-gtk"] floating enable
 for_window [class="^Gnome-font-viewer$"] floating enable
 for_window [class="Imagewriter"] floating enable
 for_window [class="Font-manager"] floating enable
@@ -703,6 +705,7 @@ for_window [class="zoom"] focus
 
 assign [class="Vlc"]                                                    → 7
 for_window [class="^Vlc$"] floating disable                  
+
 
 ###############################################################################
 #######                         Workspace 8                          ##########
