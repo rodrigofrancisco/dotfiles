@@ -524,9 +524,14 @@ bindsym $mod+F3 exec --no-startup-id morc_menu
 #bindsym $mod+F4 exec --no-startup-id gmrun
 
 # dmenu: normally dmenu + i3 is the standard commbination
-#bindsym $mod+d exec --no-startup-id dmenu_run -i -nb \
-#'#191919' -nf '#fea63c' -sb '#fea63c' -sf '#191919' -fn \
-#'NotoMonoRegular:bold:pixelsize=14'
+#bindsym $mod+Control+d exec --no-startup-id dmenu_run -i -nb '#191919' \
+#-nf '#fea63c' -sb '#fea63c' -sf '#191919' \
+#-fn 'NotoMonoRegular:bold:pixelsize=14' 
+
+bindsym $mod+Control+d exec --no-startup-id \
+~/.config/i3/scripts/dmenu_run_history -i -nb '#191919' \
+-nf '#fea63c' -sb '#fea63c' -sf '#191919' \
+-fn 'NotoMonoRegular:bold:pixelsize=14' 
 
 
 ###############################################################################
@@ -745,8 +750,8 @@ for_window [class="facebookmessenger-nativefier-7ab88e"] focus
 assign [class="facebook-nativefier-d58ff9"]                             → 9
 for_window [class="facebook-nativefier-d58ff9"] focus 
 
-assign [class="mailspring"]                                             → 9
-for_window [class="mailspring"] focus   
+assign [class="Mailspring"]                                             → 9
+for_window [class="Mailspring"] focus   
 
 ###############################################################################
 #######                         Workspace 10                         ##########
