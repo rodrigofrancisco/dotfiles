@@ -81,6 +81,12 @@
 # Defining a primary monitor is usefull for the trayicons
 set $primary-monitor LVDS1
 
+# Set directory to save screenshots taken from flameshot
+set $screenshots-dir /f/screenshots
+set $screenlayout-dir /f/scripts/screenlayout
+# Scripts store the i3exit shell script and the dmenu_run_history 
+set $scripts ~/.config/i3/scripts 
+
 # Set Super key or Windows key as the $MOD key for i3
 set $mod Mod4
 
@@ -106,10 +112,6 @@ set $ws8 8
 set $ws9 9
 set $ws0 10
 
-# Set directory to save screenshots taken from flameshot
-set $screenshots-dir /f/screenshots
-set $screenlayout-dir /f/scripts/screenlayout
-set $scripts ~/.config/i3/scripts 
 
 ###############################################################################
 ############                  Font and colors                   ###############
