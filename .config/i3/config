@@ -50,7 +50,7 @@
 # You need the scripts directory to use the $mode_system and the screen layout
 # to use dual monitor configuration
 #
-# Make sure to modify $primary-monitor variable to match your xrandr output
+# MAKE SURE TO MODIFY VARIABLES SECTION TO MATCH YOUR DIRECTORIES NAMES
 # This configuration may work even if you don't have the program listed above,
 # but in a very primitive way.
 # 
@@ -108,6 +108,8 @@ set $ws0 10
 
 # Set directory to save screenshots taken from flameshot
 set $screenshots-dir /f/screenshots
+set $screenlayout-dir /f/scripts/screenlayout
+set $scripts ~/.config/i3/scripts 
 
 ###############################################################################
 ############                  Font and colors                   ###############
@@ -458,17 +460,17 @@ set $mode_system System \
   (k) lock, (l) logout, (u) suspend, (h) hibernate, (r) reboot, (s) shutdown
 mode "$mode_system" {
     bindsym k exec --no-startup-id \
-      ~/.config/i3/scripts/i3exit.sh lock, mode "default"
+      $scripts/i3exit.sh lock, mode "default"
     bindsym l exec --no-startup-id \
-      ~/.config/i3/scripts/i3exit.sh logout, mode "default"
+      $scripts/i3exit.sh logout, mode "default"
     bindsym u exec --no-startup-id \
-      ~/.config/i3/scripts/i3exit.sh suspend, mode "default"
+      $scripts/i3exit.sh suspend, mode "default"
     bindsym h exec --no-startup-id \
-      ~/.config/i3/scripts/i3exit.sh hibernate, mode "default"
+      $scripts/i3exit.sh hibernate, mode "default"
     bindsym r exec --no-startup-id \
-    ~/.config/i3/scripts/i3exit.sh reboot, mode "default"
+      $scripts/i3exit.sh reboot, mode "default"
     bindsym s exec --no-startup-id \
-      ~/.config/i3/scripts/i3exit.sh shutdown, mode "default"
+      $scripts/i3exit.sh shutdown, mode "default"
 
     # back to normal: Enter or Escape
     bindsym Return mode "default"
@@ -499,10 +501,10 @@ bindsym $mod+comma move workspace to output right
 # To place the second monitor to the left you have to press <mod> + F9
 # @dependency: screenlayout scripts
 
-bindsym $mod+F9 exec --no-startup-id  sh /f/scripts/screenlayout/extendedL.sh
-bindsym $mod+F10 exec --no-startup-id sh /f/scripts/screenlayout/normal.sh
-bindsym $mod+F11 exec --no-startup-id sh /f/scripts/screenlayout/zoom.sh
-bindsym $mod+F12 exec --no-startup-id sh /f/scripts/screenlayout/extendedR.sh
+bindsym $mod+F9 exec --no-startup-id  sh $screenlayout-dir/extendedL.sh
+bindsym $mod+F10 exec --no-startup-id sh $screenlayout-dir/normal.sh
+bindsym $mod+F11 exec --no-startup-id sh $screenlayout-dir/zoom.sh
+bindsym $mod+F12 exec --no-startup-id sh $screenlayout-dir/extendedR.sh
 
 
 ###############################################################################
@@ -529,7 +531,7 @@ bindsym $mod+F3 exec --no-startup-id morc_menu
 #-fn 'NotoMonoRegular:bold:pixelsize=14' 
 
 bindsym $mod+Control+d exec --no-startup-id \
-~/.config/i3/scripts/dmenu_run_history -i -nb '#191919' \
+$scripts/dmenu_run_history -i -nb '#191919' \
 -nf '#fea63c' -sb '#fea63c' -sf '#191919' \
 -fn 'NotoMonoRegular:bold:pixelsize=14' 
 
