@@ -73,7 +73,7 @@ alias ssn="sudo shutdown now"
 alias sr="sudo reboot"                                                          
 
 # Git bare repository for my dotfiles in the HOME directory
-alias dotbare='/usr/bin/git --git-dir=/f/dotfiles --work-tree=$HOME'
+alias dotbare='/usr/bin/git --git-dir=/f/dev/dotfiles --work-tree=$HOME'
 alias dot='dotbare'
                                                                                 
 # git                                                                           
@@ -137,3 +137,9 @@ alias kc='killall conky'
 #switch between bash and zsh
 alias tobash="sudo chsh $USER -s /bin/bash && echo 'Now log out.'"
 alias tozsh="sudo chsh $USER -s /bin/zsh && echo 'Now log out.'"
+
+
+# EXPORTS TO EASYLY CHANGE MOST VISITED DIRECTORIES
+
+export schedule="/f/dev/schedule"
+export apuntes="/f/dev/ludomatics-apuntes"
