@@ -83,7 +83,7 @@ set $primary-monitor LVDS1
 
 # Set directory to save screenshots taken from flameshot
 set $screenshots-dir /f/screenshots
-set $screenlayout-dir /f/scripts/screenlayout
+set $screenlayout-dir /f/dev/scripts/screenlayout
 # Scripts store the i3exit shell script and the dmenu_run_history 
 set $scripts ~/.config/i3/scripts 
 
@@ -634,15 +634,22 @@ bindsym control+mod1+m exec --no-startup-id xfce4-settings-manager
 #############                   screenshots                       #############
 ###############################################################################
 
-# Screenshot with flameshot
+# Screenshot: flameshot
 bindsym $mod+c exec --no-startup-id flameshot gui
 bindsym Print exec --no-startup-id flameshot full -p $screenshots-dir 
 
-# This two binds work in a dual space layout
+# Screenshot: shutter
+bindsym $mod+Ctrl+c exec --no-startup-id shutter -s
+
+# flameshot: This two binds work in a dual space layout
 bindsym $mod+Print exec --no-startup-id flameshot screen -n 0 \
   -p  $screenshots-dir
 bindsym $mod+Shift+Print exec --no-startup-id flameshot screen -n 1 \
   -p $screenshots-dir
+
+# screenshots: shutter
+bindsym $mod+Control+Print exec --no-startup-id shutter -w
+for_window [class="Shutter"] floating enable
 
 # NOT USED
 #bindsym Print exec --no-startup-id scrot \
@@ -764,16 +771,20 @@ for_window [class="Mailspring"] focus
 # Workspace 10 music related
 # Spotify Music
 bindsym $mod+Shift+s exec --no-startup-id spotify;focus
-assign [class="Spotify|spotify"]                                       → 10
+assign [class="Spotify|spotify"]                                        → 10
 for_window [class="Spotify"] move to workspace 10
 for_window [class="Spotify"] focus
 for_window [class="^Spotify$"] floating disable              
 
-assign [class="draw.io"]                                               → 10
+assign [class="draw.io"]                                                → 10
 for_window [class="draw.io"] focus
 
-assign [class="obs"]                                                   → 10
+assign [class="obs"]                                                    → 10
 for_window [class="obs"] focus
+
+assign [class="qtws"]                                                   → 10
+for_window [class="qtws"] focus
+
 
 ###############################################################################
 #########                   editing config files                ###############
@@ -811,6 +822,13 @@ exec --no-startup-id alacritty
 # Polybar
 exec_always --no-startup-id ~/.config/polybar/launch.sh &
 
+# flameshot
+exec --no-startup-id flameshot
+
+# shutter
+# TESTING
+exec --no-startup-id shutter --min_at_startup
+
 # Conky
 #exec --no-startup-id conky -c ~/.config/i3/system-overview
 
@@ -838,9 +856,6 @@ exec --no-startup-id nm-applet
 # volume
 #exec --no-startup-id pasystray
 exec --no-startup-id volumeicon
-
-# flameshot
-exec --no-startup-id flameshot
 
 # clipman
 #exec --no-startup-id xfce4-clipman
