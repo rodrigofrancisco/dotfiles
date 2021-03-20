@@ -381,6 +381,12 @@ bindsym XF86AudioStop exec --no-startup-id playerctl stop
 
 # resize window (you can also use the mouse for that)
 
+
+bindsym $mod+mod1+$left       resize shrink width 10 px or 10 ppt
+bindsym $mod+mod1+$down       resize grow height 10 px or 10 ppt
+bindsym $mod+mod1+$up         resize shrink height 10 px or 10 ppt
+bindsym $mod+mod1+$right      resize grow width 10 px or 10 ppt
+
 bindsym $mod+r mode "resize"
 
 mode "resize" {
@@ -673,8 +679,8 @@ for_window [class="Shutter"] floating enable
 
 # browser :firefox
 bindsym $mod+w exec --no-startup-id exo-open --launch webbrowser;focus
-assign [class="firefox|Firefox"]                                        → 2
-for_window [class="firefox|Firefox"] focus
+assign [class="Brave-browser"]                                          → 2
+for_window [class="Brave-browser"] focus
 
 
 ###############################################################################
@@ -736,12 +742,8 @@ for_window [class="^Vlc$"] floating disable
 #######                         Workspace 8                          ##########
 ###############################################################################
 
-assign [class="Brave-browser"]                                          → 8
-for_window [class="Brave-browser"] focus
-
-bindsym $mod+Shift+w exec --no-startup-id vivaldi-stable;focus
-assign [class="Vivaldi-stable|Vivaldi-snapshot"]                        → 8
-for_window [class="Vivaldi-stable|Vivaldi-snapshot"] focus
+assign [class="firefox|Firefox"]                                        → 8
+for_window [class="firefox|Firefox"] focus
 
 
 ###############################################################################
@@ -826,7 +828,6 @@ exec_always --no-startup-id ~/.config/polybar/launch.sh &
 exec --no-startup-id flameshot
 
 # shutter
-# TESTING
 exec --no-startup-id shutter --min_at_startup
 
 # Conky
