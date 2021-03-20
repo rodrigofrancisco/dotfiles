@@ -5,7 +5,7 @@ import subprocess
 from libqtile.config import Drag, Key, Screen, Group, Click, Rule, Match 
 from libqtile.command import lazy
 from libqtile import layout, bar, widget, hook
-from libqtile.widget import Spacer 
+# from libqtile.widget import Spacer 
 
 
 ###############################################################################
@@ -93,6 +93,7 @@ keys = [
   # QTILE LAYOUT KEYS
   Key([mod], "n", lazy.layout.normalize()),
   Key([mod], "space", lazy.next_layout()),
+  Key([mod], "f", lazy.window.toggle_fullscreen()),
 
   # Toggle floating layout
   Key([mod, "shift"], "space", lazy.window.toggle_floating()),
@@ -132,12 +133,20 @@ keys = [
   Key([mod],"p", lazy.spawn('pavucontrol')),
 
   # Program laucher
+  Key([mod], "F2", lazy.spawn('xfce4-appfinder')),
+  Key([mod], "F3", lazy.spawn('morc_menu')),
+  Key([mod,"mod1"], "d", lazy.spawn(home+'/.conf/i3/scripts/dmenu_run_history\
+    -i -nb "#191919" -nf "#fea63c" -sb "#fea63c" -sf "#191919" \
+    -fn "NotoMonoRegular:bold:pixelsize=14"')),
+
   Key([mod], "d", lazy.spawn('rofi -show run -font "Noto Sans 13"')),
   Key([mod,"shift"], "d", lazy.spawn('rofi -show window -font "Noto Sans 13"')),
 
   Key([mod], "Return", lazy.spawn('alacritty')),
   Key([mod], "w", lazy.spawn('brave')),
   Key([mod,"shift"], "w", lazy.spawn('firefox')),
+  Key([mod], "o", lazy.spawn('dolphin')),
+  Key([mod], "x", lazy.spawn('evince')),
 
 
   #############################################################################
@@ -168,12 +177,11 @@ groups = []
 # FOR QWERTY KEYBOARDS
 group_names = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0",]
 
-group_labels = [" 1", " 2", "  3", " 4", " 5", 
+group_labels = [" 1", " 2", "  3", " 4", " 5", 
   " 6", " 7", " 8", " 9", " 10",]
 
-group_layouts = ["max", "monadtall", "monadtall", "monadtall", 
-  "monadtall", "monadtall", "monadtall", "monadtall", "monadtall", 
-  "monadtall",]
+group_layouts = ["max", "monadtall", "max", "max", 
+  "max", "max", "max", "max", "max", "max",]
 #group_layouts = ["monadtall", "matrix", "monadtall", "bsp", "monadtall", 
 #"matrix", "monadtall", "bsp", "monadtall", "monadtall",]
 
@@ -192,9 +200,6 @@ for i in groups:
   keys.extend([
     #CHANGE WORKSPACES
     Key([mod], i.name, lazy.group[i.name].toscreen()),
-    Key([mod,"mod1"], "l", lazy.screen.next_group()),
-    Key([mod,"mod1"], "h", lazy.screen.prev_group()),
-    Key([mod],"Tab",lazy.screen.toggle_group()),
 
     # MOVE WINDOW TO SELECTED WORKSPACE 1-10 AND STAY ON WORKSPACE
     #Key([mod, "shift"], i.name, lazy.window.togroup(i.name)),
@@ -205,6 +210,14 @@ for i in groups:
     Key([mod, "control"], 
       i.name, lazy.window.togroup(i.name)),
   ])
+
+keys.extend([
+  Key([mod,"mod1"], "l", lazy.screen.next_group()),
+  Key([mod,"mod1"], "h", lazy.screen.prev_group()),
+  Key([mod],"Tab",lazy.screen.toggle_group()),
+  Key([mod],"z",lazy.next_layout()),
+  Key([mod],"e",lazy.prev_layout()),
+])
 
 
 ###############################################################################
@@ -222,21 +235,21 @@ def init_layout_theme():
 layout_theme = init_layout_theme()
 
 layouts = [
+    layout.Max(**layout_theme),
+    layout.Floating(**layout_theme),
     layout.MonadTall(
-      margin=8, 
+      margin=5, 
       border_width=2, 
       border_focus="#5e81ac", 
       border_normal="#4c566a"
     ),
     layout.MonadWide(
-      margin=8, 
+      margin=5, 
       border_width=2, 
       border_focus="#5e81ac", 
       border_normal="#4c566a"
     ),
     layout.Bsp(**layout_theme),
-    layout.Floating(**layout_theme),
-    layout.Max(**layout_theme),
     layout.Stack(**layout_theme),
 ]
 
@@ -274,16 +287,16 @@ def assign_app_group(client):
   d["2"] = ["termite"]
   d["3"] = ["Code-oss", "Code",  "code-oss", "code", ]
   d["4"] = ["okular",]
-  d["6"] = ["dolphin",]
-  d["7"] = ["Vlc","vlc", "Mpv", "mpv","zoom","Skype" ]
   d["5"] = ["VirtualBox Manager", "VirtualBox Machine", 
             "virtualbox manager", "virtualbox machine",
             ]
+  d["6"] = ["dolphin",]
+  d["7"] = ["Vlc","vlc", "Mpv", "mpv","zoom","Skype" ]
   d["8"] = ["",]
-  d["9"] = ["TelegramDesktop","telegramDesktop",
+  d["9"] = ["TelegramDesktop","telegram-desktop","Telegram"
             "facebookmessenger-nativefier-7ab88e",
             "whatsapp-nativefier-d40211" ]
-  d["0"] = ["Spotify","draw.io","obs",]
+  d["0"] = ["Spotify","spotify","Spotify Free","draw.io","obs",]
   ##########################################################
   wm_class = client.window.get_wm_class()[0]
 
@@ -319,9 +332,13 @@ follow_mouse_focus = True
 bring_front_click = False
 cursor_warp = False
 floating_layout = layout.Floating(float_rules=[
+  *layout.Floating.default_float_rules,
+  Match(title='Confirmation'),  # tastyworks exit box
+  Match(title='Qalculate!'),  # qalculate-gtk
   Match(wm_class= 'arcolinux-welcome-app.py'),
   Match(wm_class= 'arcolinux-tweak-tool.py'),
   Match(wm_class= 'confirm'),
+  Match(wm_class= 'pavucontrol'),
   Match(wm_class= 'dialog'),
   Match(wm_class= 'download'),
   Match(wm_class= 'error'),
@@ -338,14 +355,75 @@ floating_layout = layout.Floating(float_rules=[
   Match(wm_class= 'arcolinux-logout'),
   Match(wm_class= 'xfce4-terminal'),
   Match(wm_class= 'ssh-askpass'),
+  Match(wm_class= 'Xfce4-appfinder'),
   Match(wm_type= 'branchdialog'),
   Match(wm_type= 'open file'),
+  Match(title= 'Save File',role='GtkFileChooserDialog'),
+  Match(title= 'Select one or more files to open'),
+  Match(role='GtkFileChooserDialog'),
+  Match(title='Chat'),
   Match(wm_type= 'pinentry'),
-],fullscreen_border_width = 0, border_width = 0)
+# ],fullscreen_border_width = 0, border_width = 0)
+],fullscreen_border_width = 0)
 
 auto_fullscreen = True
 
-focus_on_window_activation = "focus" # or smart
+# focus_on_window_activation = "focus" # or smart
+focus_on_window_activation = "smart"
+
+wmname = "LG3D"
+
+###############################################################################
+########                    Widget config for the BAR                ##########
+###############################################################################
+
+def init_colors():
+  return [
+    ["#2F343F", "#2F343F"], # color 0
+    ["#2F343F", "#2F343F"], # color 1
+    ["#c0c5ce", "#c0c5ce"], # color 2
+    ["#fba922", "#fba922"], # color 3
+    ["#3384d0", "#3384d0"], # color 4
+    ["#f3f4f5", "#f3f4f5"], # color 5
+    ["#cd1f3f", "#cd1f3f"], # color 6
+    ["#62FF00", "#62FF00"], # color 7
+    ["#6790eb", "#6790eb"], # color 8
+    ["#a9a9a9", "#a9a9a9"], # color 9
+  ] 
+
+
+colors = init_colors()
+
+def init_widgets_defaults():
+  return dict(font="Noto Sans",
+    fontsize = 11,
+    padding = 2,
+    background=colors[1]
+  )
+
+widget_defaults = init_widgets_defaults()
+
+def init_widgets_list():
+  prompt = "{0}@{1}: ".format(os.environ["USER"], socket.gethostname())
+  widgets_list = [
+    widget.GroupBox(
+      font="FontAwesome",
+      fontsize = 12,
+      margin_y = -1,
+      margin_x = 0,
+      padding_y = 6,
+      padding_x = 5,
+      borderwidth = 0,
+      disable_drag = True,
+      active = colors[9],
+      inactive = colors[5],
+      rounded = False,
+      highlight_method = "text",
+      this_current_screen_border = colors[8],
+      foreground = colors[2],
+      background = colors[1]
+    ),
+  ]
 
 wmname = "LG3D"
 
@@ -499,7 +577,48 @@ def init_widgets_list():
       margin = 3,
       padding = 4,
     ),
-    #widget.DF(),
+    widget.TextBox(
+      font="FontAwesome",
+      text="  ",
+      foreground=colors[3],
+      background=colors[1],
+      padding = 0,
+      fontsize=16
+    ),
+    widget.DF(
+      warn_space=10, 
+      measure='G', 
+      format=' {p}:{uf}{m}',
+      update_interval=60,
+      visible_on_warn = False,
+      foreground = colors[5],
+      partition="/",
+      background=colors[1],
+    ),
+    widget.TextBox(
+      font="FontAwesome",
+      text="  ",
+      foreground=colors[4],
+      background=colors[1],
+      padding = 0,
+      fontsize=16
+    ),
+    widget.DF(
+      warn_space=10, 
+      visible_on_warn = False,
+      measure='G', 
+      format=' {p}:{uf}{m}',
+      update_interval=60,
+      foreground = colors[5],
+      partition="/f",
+      background=colors[1],
+    ),
+    widget.Sep(
+      linewidth = 1,
+      padding = 10,
+      foreground = colors[2],
+      background = colors[1]
+    ),
     widget.TextBox(
       font="FontAwesome",
       text=" ",
@@ -552,7 +671,7 @@ def init_widgets_list():
     ),
     widget.Memory(
       font="Noto Sans",
-      format = '{MemUsed}M/{MemTotal}M',
+      format = '{MemPercent}%',
       update_interval = 1,
       fontsize = 12,
       foreground = colors[5],
@@ -614,3 +733,17 @@ def init_screens():
   ]
 
 screens = init_screens()
+
+def switch_screens():
+  @lazy.function
+  def __inner(qtile):
+    i = qtile.screens.index(qtile.current_screen)
+    group = qtile.screens[i - 1].group
+    qtile.current_screen.set_group(group)
+  return __inner
+
+keys.extend([
+  Key([mod],"comma",switch_screens()),
+  Key([mod],"period",lazy.next_screen()),
+])
+
