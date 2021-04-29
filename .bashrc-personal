@@ -91,7 +91,7 @@ alias pushm='git push origin master'
 alias gs='git status'                                                       
                                                                                 
 # Formated IP
-alias ipa='ip -br -c addr show'
+alias ipa='ip -br -4 -c addr show'
                                                                                 
 # # ex = EXtractor for all kinds of archives                                    
 # # usage: ex <file>                                                            
@@ -138,8 +138,12 @@ alias kc='killall conky'
 alias tobash="sudo chsh $USER -s /bin/bash && echo 'Now log out.'"
 alias tozsh="sudo chsh $USER -s /bin/zsh && echo 'Now log out.'"
 
+alias status="systemctl status"
+
+alias tree="tree -C"
 
 # EXPORTS TO EASYLY CHANGE MOST VISITED DIRECTORIES
 
 export schedule="/f/dev/schedule"
 export apuntes="/f/dev/ludomatics-apuntes"
+export semestre="/f/semestre-10"
