@@ -108,7 +108,8 @@ noremap <leader>F ye :%s/<c-r>"
 noremap <leader>o i<return><esc>$
 
 " Erase tildes from a, e,i,o,u and erase ñ 
-noremap <leader>ti :%s/á/a/g<cr>:%s/é/e/g<cr>:%s/í/i/g<cr>:%s/ó/o/g<cr>:%s/ú/u/g<cr>:%s/ñ/n/g<cr>
+noremap <leader>ti :%s/á/a/g<cr><bar>:%s/é/e/g<cr><bar>:%s/í/i/g<cr><bar>:%s/ó/o/g<cr><bar>:%s/ú/u/g<cr><bar>:%s/ñ/n/g<cr>
+noremap <leader>co :read $HOME/.config/nvim/snippets/code-fence-asciidoc<cr>jo
 
 """"""""""""""""""""""""""""""""""""""""""""
 "               Styling VIm                 "
@@ -155,6 +156,11 @@ call plug#begin()
   " Themes
   Plug 'morhetz/gruvbox'      
 
+  " Plugings for plantuml
+  Plug 'aklt/plantuml-syntax'
+  Plug 'weirongxu/plantuml-previewer.vim'
+  Plug 'tyru/open-browser.vim'
+
   " UNTESTED/UNCONFIGURE PLUGINGS
   "Plug 'easymotion/vim-easymotion'
   "Plug 'christoomey/vim-tmux-navigator'
@@ -189,7 +195,7 @@ let g:VM_maps["Redo"] = '<C-r>'
 " NOTE:- NERDCommenter inject some keybinding using <leader> key and c
 
 " TODO:- Configure this for only latex files
-noremap <leader>la :w <CR>:! sh compile.sh % <cr>
+noremap <leader>la :w <CR>: ! sh latex/compile.sh % <cr>
 
 
 """""""""""""""""""""""""""""""""""""""""""""
