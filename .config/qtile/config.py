@@ -128,6 +128,7 @@ keys = [
   Key([mod, "shift"], "e", lazy.spawn('arcolinux-logout')),
 
   Key([mod,"shift"], "q", lazy.window.kill()),
+  Key([mod], "q", lazy.window.kill()),
   Key([mod], "Escape", lazy.spawn('xkill')),
 
   Key([mod],"p", lazy.spawn('pavucontrol')),
@@ -143,6 +144,7 @@ keys = [
   Key([mod,"shift"], "d", lazy.spawn('rofi -show window -font "Noto Sans 13"')),
 
   Key([mod], "Return", lazy.spawn('alacritty')),
+  Key([mod,"shift"], "Return", lazy.spawn('konsole')),
   Key([mod], "w", lazy.spawn('brave')),
   Key([mod,"shift"], "w", lazy.spawn('firefox')),
   Key([mod], "o", lazy.spawn('dolphin')),
@@ -154,6 +156,7 @@ keys = [
   #############################################################################
 
   Key([mod], "c", lazy.spawn('flameshot gui')),
+  Key([], "Print", lazy.spawn('flameshot full -p /f/screenshots/')),
   #TODO:- Completar
 
 
@@ -243,13 +246,13 @@ layouts = [
       border_focus="#5e81ac", 
       border_normal="#4c566a"
     ),
-    layout.MonadWide(
-      margin=5, 
-      border_width=2, 
-      border_focus="#5e81ac", 
-      border_normal="#4c566a"
-    ),
-    layout.Bsp(**layout_theme),
+    # layout.MonadWide(
+      # margin=5, 
+      # border_width=2, 
+      # border_focus="#5e81ac", 
+      # border_normal="#4c566a"
+    # ),
+    # layout.Bsp(**layout_theme),
     layout.Stack(**layout_theme),
 ]
 
@@ -294,7 +297,7 @@ def assign_app_group(client):
   d["7"] = ["Vlc","vlc", "Mpv", "mpv","zoom","Skype" ]
   d["8"] = ["",]
   d["9"] = ["TelegramDesktop","telegram-desktop","Telegram"
-            "facebookmessenger-nativefier-7ab88e",
+            "facebookmessenger-nativefier-7ab88e","Messenger"
             "whatsapp-nativefier-d40211" ]
   d["0"] = ["Spotify","spotify","Spotify Free","draw.io","obs",]
   ##########################################################
@@ -363,13 +366,17 @@ floating_layout = layout.Floating(float_rules=[
   Match(role='GtkFileChooserDialog'),
   Match(title='Chat'),
   Match(wm_type= 'pinentry'),
-# ],fullscreen_border_width = 0, border_width = 0)
+  Match(wm_class='Shutter'),
+  Match(wm_class='konsole'),
+  Match(wm_class='sun-awt-X11-XFramePeer'),
+  Match(wm_class='telegram-desktop'),
+  Match(wm_class='TelegramDesktop'),
 ],fullscreen_border_width = 0)
 
 auto_fullscreen = True
 
-# focus_on_window_activation = "focus" # or smart
-focus_on_window_activation = "smart"
+focus_on_window_activation = "focus" # or smart
+# focus_on_window_activation = "smart"
 
 wmname = "LG3D"
 
