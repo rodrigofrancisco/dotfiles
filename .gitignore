@@ -14,6 +14,7 @@ Edraw/
 snap/
 
 # Apps generated hidden directories
+.config-*
 .AndroidStudio4.*/
 .android
 .com.kodedu.boot.AppStarter/
@@ -96,7 +97,6 @@ snap/
 .screenrc
 .vuerc
 .xinitrc
-.xmonad/
 .xsession
 .xsessionrc
 
