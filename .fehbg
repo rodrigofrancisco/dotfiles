@@ -1,0 +1,2 @@
+#!/bin/sh
+feh --no-fehbg --bg-fill '/usr/share/backgrounds/arcolinux/green-meadows-3360x1050.jpg' 
