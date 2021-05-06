@@ -156,19 +156,17 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   ----------------------------------------------------------------------
   -- SUPER + FUNCTION KEYS
 
-  [ ((modMask, xK_e), spawn $ "atom" )
-  , ((modMask, xK_c), spawn $ "conky-toggle" )
-  , ((modMask, xK_f), sendMessage $ Toggle NBFULL)
+  [ 
+    ((modMask, xK_f), sendMessage $ Toggle NBFULL)
   , ((modMask, xK_h), spawn $ "urxvt 'htop task manager' -e htop" )
-  , ((modMask, xK_m), spawn $ "pragha" )
   , ((modMask, xK_q), kill )
-  , ((modMask, xK_r), spawn $ "rofi-theme-selector" )
   , ((modMask, xK_t), spawn $ "alacritty" )
   , ((modMask, xK_v), spawn $ "pavucontrol" )
   , ((modMask, xK_y), spawn $ "polybar-msg cmd toggle" )
   , ((modMask, xK_x), spawn $ "arcolinux-logout" )
   , ((modMask, xK_Escape), spawn $ "xkill" )
   , ((modMask, xK_Return), spawn $ "alacritty" )
+  , ((modMask, xK_d ), spawn $ "rofi -show run -font 'Noto Sans 13'")
   , ((modMask, xK_F1), spawn $ "vivaldi-stable" )
   , ((modMask, xK_F2), spawn $ "atom" )
   , ((modMask, xK_F3), spawn $ "inkscape" )
@@ -190,6 +188,7 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   , ((modMask .|. shiftMask , xK_Return ), spawn $ "thunar")
   , ((modMask .|. shiftMask , xK_d ), spawn $ 
     "dmenu_run -i -nb '#191919' -nf '#fea63c' -sb '#fea63c' -sf '#191919' -fn 'NotoMonoRegular:bold:pixelsize=14'")
+  , ((modMask .|. controlMask, xK_d ), spawn $ "rofi -show window -font 'Noto Sans 13'")
   , ((modMask .|. shiftMask , xK_r ), spawn $ "xmonad --recompile && xmonad --restart")
   , ((modMask .|. shiftMask , xK_q ), kill)
   -- , ((modMask .|. shiftMask , xK_x ), io (exitWith ExitSuccess))
