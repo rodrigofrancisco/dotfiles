@@ -842,7 +842,6 @@ exec --no-startup-id shutter --min_at_startup
 #exec_always --no-startup-id picom --config ~/.config/i3/picom.conf
 
 # Exec terminal on start
-exec --no-startup-id alacritty
 exec --no-startup-id brave
 exec --no-startup-id telegram-desktop
 exec --no-startup-id discord
