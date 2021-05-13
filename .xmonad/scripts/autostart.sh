@@ -36,7 +36,7 @@ feh --bg-fill /usr/share/backgrounds/arcolinux/arco-wallpaper.jpg &
 #starting utility applications at boot time
 run variety &
 run nm-applet &
-run pamac-tray &
+#run pamac-tray &
 run xfce4-power-manager &
 run volumeicon &
 numlockx on &
@@ -54,8 +54,8 @@ blueberry-tray &
 #run spotify &
 #run atom &
 
-run telegram-desktop &
-run discord &
+#run telegram-desktop &
+#run discord &
 #run dropbox &
 #run insync start &
 #run ckb-next -b &

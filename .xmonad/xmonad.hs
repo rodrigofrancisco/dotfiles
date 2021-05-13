@@ -162,30 +162,18 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
   , ((modMask, xK_q), kill )
   , ((modMask, xK_t), spawn $ "alacritty" )
   , ((modMask, xK_v), spawn $ "pavucontrol" )
-  , ((modMask, xK_y), spawn $ "polybar-msg cmd toggle" )
   , ((modMask, xK_x), spawn $ "arcolinux-logout" )
   , ((modMask, xK_Escape), spawn $ "xkill" )
   , ((modMask, xK_Return), spawn $ "alacritty" )
   , ((modMask, xK_d ), spawn $ "rofi -show run -font 'Noto Sans 13'")
-  , ((modMask, xK_F1), spawn $ "vivaldi-stable" )
-  , ((modMask, xK_F2), spawn $ "atom" )
-  , ((modMask, xK_F3), spawn $ "inkscape" )
-  , ((modMask, xK_F4), spawn $ "gimp" )
-  , ((modMask, xK_F5), spawn $ "meld" )
   , ((modMask, xK_F6), spawn $ "vlc --video-on-top" )
-  , ((modMask, xK_F7), spawn $ "virtualbox" )
-  , ((modMask, xK_F8), spawn $ "thunar" )
-  , ((modMask, xK_F9), spawn $ "evolution" )
   , ((modMask, xK_F10), spawn $ "spotify" )
-  , ((modMask, xK_F11), spawn $ "rofi -show run -fullscreen" )
-  , ((modMask, xK_F12), spawn $ "rofi -show run" )
 
   -- FUNCTION KEYS
-  , ((0, xK_F12), spawn $ "xfce4-terminal --drop-down" )
+  --, ((0, xK_F12), spawn $ "xfce4-terminal --drop-down" )
 
   -- SUPER + SHIFT KEYS
 
-  , ((modMask .|. shiftMask , xK_Return ), spawn $ "thunar")
   , ((modMask .|. shiftMask , xK_d ), spawn $ 
     "dmenu_run -i -nb '#191919' -nf '#fea63c' -sb '#fea63c' -sf '#191919' -fn 'NotoMonoRegular:bold:pixelsize=14'")
   , ((modMask .|. controlMask, xK_d ), spawn $ "rofi -show window -font 'Noto Sans 13'")
@@ -195,40 +183,17 @@ myKeys conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
 
   -- CONTROL + ALT KEYS
 
-  , ((controlMask .|. mod1Mask , xK_Next ), spawn $ "conky-rotate -n")
-  , ((controlMask .|. mod1Mask , xK_Prior ), spawn $ "conky-rotate -p")
   , ((controlMask .|. mod1Mask , xK_a ), spawn $ "xfce4-appfinder")
-  , ((controlMask .|. mod1Mask , xK_b ), spawn $ "thunar")
-  , ((controlMask .|. mod1Mask , xK_c ), spawn $ "catfish")
   , ((controlMask .|. mod1Mask , xK_e ), spawn $ "arcolinux-tweak-tool")
-  , ((controlMask .|. mod1Mask , xK_f ), spawn $ "firefox")
-  , ((controlMask .|. mod1Mask , xK_g ), spawn $ "chromium -no-default-browser-check")
-  , ((controlMask .|. mod1Mask , xK_i ), spawn $ "nitrogen")
-  , ((controlMask .|. mod1Mask , xK_k ), spawn $ "arcolinux-logout")
   , ((controlMask .|. mod1Mask , xK_l ), spawn $ "arcolinux-logout")
   , ((controlMask .|. mod1Mask , xK_m ), spawn $ "xfce4-settings-manager")
-  , ((controlMask .|. mod1Mask , xK_o ), spawn $ "$HOME/.xmonad/scripts/picom-toggle.sh")
-  , ((controlMask .|. mod1Mask , xK_p ), spawn $ "pamac-manager")
-  , ((controlMask .|. mod1Mask , xK_r ), spawn $ "rofi-theme-selector")
   , ((controlMask .|. mod1Mask , xK_s ), spawn $ "spotify")
   , ((controlMask .|. mod1Mask , xK_t ), spawn $ "alacritty")
   , ((controlMask .|. mod1Mask , xK_u ), spawn $ "pavucontrol")
-  , ((controlMask .|. mod1Mask , xK_v ), spawn $ "vivaldi-stable")
-  , ((controlMask .|. mod1Mask , xK_w ), spawn $ "arcolinux-welcome-app")
   , ((controlMask .|. mod1Mask , xK_Return ), spawn $ "alacritty")
 
   -- ALT + ... KEYS
-
-  , ((mod1Mask, xK_f), spawn $ "variety -f" )
-  , ((mod1Mask, xK_n), spawn $ "variety -n" )
-  , ((mod1Mask, xK_p), spawn $ "variety -p" )
   , ((mod1Mask, xK_r), spawn $ "xmonad --restart" )
-  , ((mod1Mask, xK_t), spawn $ "variety -t" )
-  , ((mod1Mask, xK_Up), spawn $ "variety --pause" )
-  , ((mod1Mask, xK_Down), spawn $ "variety --resume" )
-  , ((mod1Mask, xK_Left), spawn $ "variety -p" )
-  , ((mod1Mask, xK_Right), spawn $ "variety -n" )
-  , ((mod1Mask, xK_F2), spawn $ "gmrun" )
   , ((mod1Mask, xK_F3), spawn $ "xfce4-appfinder" )
 
   --CONTROL + SHIFT KEYS

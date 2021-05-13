@@ -33,7 +33,7 @@ feh --bg-fill /usr/share/backgrounds/arcolinux/arco-wallpaper.jpg &
 #starting utility applications at boot time
 #run pamac-tray &
 #picom --config $HOME/.config/qtile/scripts/picom.conf &
-#run variety &
+run variety &
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 /usr/lib/xfce4/notifyd/xfce4-notifyd &
 numlockx on &
