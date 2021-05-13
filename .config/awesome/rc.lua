@@ -324,7 +324,7 @@ globalkeys = my_table.join(
     -- super + ... function keys
     awful.key({ modkey }, "d", function () 
       awful.util.spawn( "rofi -show run" ) end,
-        {description = "rofi lauchers" , group = "lauchers" }),
+        {description = "rofi laucher" , group = "lauchers" }),
     awful.key({ modkey,"Shift" }, "d", function () 
       awful.util.spawn( "rofi -show window" ) end,
         {description = "rofi open windows" , group = "lauchers" }),
@@ -349,6 +349,10 @@ globalkeys = my_table.join(
     -- Standard program
     awful.key({ modkey,}, "Return", function () awful.spawn(terminal) end,
               {description = terminal, group = "applications"}),
+    awful.key({ modkey,"Shift"}, "Return", function () 
+      awful.spawn("xfce4-terminal") end,
+        {description = terminal, group = "applications"}),
+
     awful.key({ modkey, "Shift" }, "r", awesome.restart,
               {description = "reload awesome", group = "awesome"}),
     -- awful.key({ modkey, "Shift"   }, "x", awesome.quit,
@@ -463,7 +467,7 @@ globalkeys = my_table.join(
       --awful.screen.focus_relative(-1) end,
         --{description = "focus the previous screen", group = "screen"}),
 
-    awful.key({ modkey,           }, "u", awful.client.urgent.jumpto,
+    awful.key({ modkey, }, "u", awful.client.urgent.jumpto,
               {description = "jump to urgent client", group = clientGroupLabel}),
     --awful.key({ modkey1, }, "Tab",
         --function ()
@@ -491,19 +495,19 @@ globalkeys = my_table.join(
     end, {description = "Toggle systray visibility", group = "awesome"}),
 
  -- Show/Hide Systray
-    --awful.key({ modkey }, "KP_Subtract", function ()
-    --awful.screen.focused().systray.visible = not awful.screen.focused().systray.visible
-    --end, {description = "Toggle systray visibility", group = "awesome"}),
+    awful.key({ modkey }, "KP_Subtract", function ()
+    awful.screen.focused().systray.visible = not awful.screen.focused().systray.visible
+    end, {description = "Toggle systray visibility", group = "awesome"}),
 
 
 
     -- On the fly useless gaps change
-    --awful.key({ altkey, "Control" }, "j", function () 
-      --lain.util.useless_gaps_resize(1) end,
-        --{description = "increment useless gaps", group = tagGroupLabel}),
-    --awful.key({ altkey, "Control" }, "h", function () 
-      --lain.util.useless_gaps_resize(-1) end,
-        --{description = "decrement useless gaps", group = tagGroupLabel}),
+    awful.key({ altkey, "Control" }, "j", function () 
+      lain.util.useless_gaps_resize(1) end,
+        {description = "increment useless gaps", group = tagGroupLabel}),
+    awful.key({ altkey, "Control" }, "h", function () 
+      lain.util.useless_gaps_resize(-1) end,
+        {description = "decrement useless gaps", group = tagGroupLabel}),
 
     -- Dynamic tagging
     awful.key({ modkey, "Shift" }, "n", function () lain.util.add_tag() end,
@@ -568,26 +572,26 @@ globalkeys = my_table.join(
     -- Brightness
     awful.key({ }, "XF86MonBrightnessUp", function () 
       os.execute("xbacklight -inc 5") end,
-              {description = "+10%", group = "system"}),
+              {description = "+5% brightness", group = "system"}),
     awful.key({ }, "XF86MonBrightnessDown", function () 
       os.execute("xbacklight -dec 5") end,
-              {description = "-10%", group = "system"}),
+              {description = "-5% brightness", group = "system"}),
 
     -- ALSA volume control
     --awful.key({ modkey1 }, "Up",
     awful.key({ }, "XF86AudioRaiseVolume",
         function ()
-            os.execute(string.format("amixer -q set %s 1%%+", 
+            os.execute(string.format("amixer -q set %s 5%%+", 
             beautiful.volume.channel))
             beautiful.volume.update()
-        end),
+        end,{description = "+5% volume", group = "system" }),
     --awful.key({ modkey1 }, "Down",
     awful.key({ }, "XF86AudioLowerVolume",
         function ()
-            os.execute(string.format("amixer -q set %s 1%%-", 
+            os.execute(string.format("amixer -q set %s 5%%-", 
             beautiful.volume.channel))
             beautiful.volume.update()
-        end),
+        end,{description = "-5% volume", group = "system" }),
     awful.key({ }, "XF86AudioMute",
         function ()
             os.execute(string.format("amixer -q set %s toggle", 
@@ -596,16 +600,16 @@ globalkeys = my_table.join(
         end),
     awful.key({ modkey1, "Shift" }, "m",
         function ()
-            os.execute(string.format("amixer -q set %s 100%%", 
+            os.execute(string.format("amixer -q set %s 90%%", 
             beautiful.volume.channel))
             beautiful.volume.update()
-        end),
+        end,{description = "max volume", group = "system" }),
     awful.key({ modkey1, "Shift" }, "0",
         function ()
             os.execute(string.format("amixer -q set %s 0%%", 
             beautiful.volume.channel))
             beautiful.volume.update()
-        end),
+        end,{description = "mute", group = "system" }),
 
     --Media keys supported by vlc, spotify, audacious, xmm2, ...
     --awful.key({}, "XF86AudioPlay", function() 
@@ -798,71 +802,49 @@ awful.rules.rules = {
     -- Titlebars
     { rule_any = { type = { "dialog", "normal" } },
       properties = { titlebars_enabled = false } },
-          -- Set applications to always map on the tag 2 on screen 1.
-    --{ rule = { class = "Subl3" },
-        --properties = { screen = 1, tag = awful.util.tagnames[2], 
-        --switchtotag = true  } },
+          -- Set applications to always map on the tag 3 on screen 1.
+    { rule = { class = "code-oss" },
+        properties = { screen = 1, tag = awful.util.tagnames[3], 
+        switchtotag = true  } },
 
 
     -- Set applications to always map on the tag 1 on screen 1.
     -- find class or role via xprop command
-    --{ rule = { class = browser2 },
-      --properties = { screen = 1, tag = awful.util.tagnames[1], 
-      --switchtotag = true  } },
+    { rule = { class = "brave-browser" },
+      properties = { screen = 1, tag = awful.util.tagnames[1], 
+      switchtotag = true  } },
 
-    --{ rule = { class = browser1 },
-      --properties = { screen = 1, tag = awful.util.tagnames[1], 
-      --switchtotag = true  } },
+    -- Set applications to always map on the tag 6 on screen 1.
+    { rule = { class = "dolphin" },
+        properties = { screen = 1, tag = awful.util.tagnames[6], 
+        switchtotag = true  } },
 
-    --{ rule = { class = "Vivaldi-stable" },
-        --properties = { screen = 1, tag = awful.util.tagnames[1], 
-        --switchtotag = true } },
+    -- Set applications to always map on the tag 7 on screen 1.
+    { rule = { class = "zoom" },
+        properties = { screen = 1, tag = awful.util.tagnames[7], 
+        switchtotag = true  } },
+    { rule = { class = "skype" },
+        properties = { screen = 1, tag = awful.util.tagnames[7], 
+        switchtotag = true  } },
+    { rule = { class = "vlc" },
+        properties = { screen = 1, tag = awful.util.tagnames[7], 
+        switchtotag = true  } },
 
-    --{ rule = { class = "Chromium" },
-      --properties = { screen = 1, tag = awful.util.tagnames[1], 
-      --switchtotag = true  } },
+    -- Set applications to always map on the tag 9 on screen 1.
+    { rule = { class = "discord" },
+        properties = { screen = 1, tag = awful.util.tagnames[9], 
+        switchtotag = true  } },
+    { rule = { class = "telegram-desktop" },
+        properties = { screen = 1, tag = awful.util.tagnames[9], 
+        switchtotag = true  } },
+    { rule = { class = "TelegramDesktop" },
+        properties = { screen = 1, tag = awful.util.tagnames[9], 
+        switchtotag = true  } },
 
-    --{ rule = { class = "Opera" },
-      --properties = { screen = 1, tag = awful.util.tagnames[1],
-      --switchtotag = true  } },
-
-    -- Set applications to always map on the tag 2 on screen 1.
-    --{ rule = { class = "Subl3" },
-        --properties = { screen = 1, tag = awful.util.tagnames[2],
-        --switchtotag = true  } },
-
-    --{ rule = { class = editorgui },
-        --properties = { screen = 1, tag = awful.util.tagnames[2], 
-        --switchtotag = true  } },
-
-    --{ rule = { class = "Brackets" },
-        --properties = { screen = 1, tag = awful.util.tagnames[2], 
-        --switchtotag = true  } },
-
-    --{ rule = { class = "Code" },
-        --properties = { screen = 1, tag = awful.util.tagnames[2], 
-        --switchtotag = true  } },
-
-    --    { rule = { class = "Geany" },
-         --  properties = { screen = 1, tag = awful.util.tagnames[2], 
-         --  switchtotag = true  } },
-
-
-    -- Set applications to always map on the tag 3 on screen 1.
-    --{ rule = { class = "Inkscape" },
-        --properties = { screen = 1, tag = awful.util.tagnames[3], 
-        --switchtotag = true  } },
-
-    -- Set applications to always map on the tag 4 on screen 1.
-    --{ rule = { class = "Gimp" },
-        --properties = { screen = 1, tag = awful.util.tagnames[4], 
-        --switchtotag = true  } },
-
-    -- Set applications to always map on the tag 5 on screen 1.
-    --{ rule = { class = "Meld" },
-        --properties = { screen = 1, tag = awful.util.tagnames[5] , 
-        --switchtotag = true  } },
-
+    -- Set applications to always map on the tag 10 on screen 1.
+    { rule = { class = "obs" },
+        properties = { screen = 1, tag = awful.util.tagnames[10], 
+        switchtotag = true  } },
 
     -- Set applications to be maximized at startup.
     -- find class or role via xprop command
@@ -922,10 +904,11 @@ awful.rules.rules = {
           "copyq",  -- Includes session name in class.
         },
         class = {
-          "Arandr",
           "Arcolinux-welcome-app.py",
           "Blueberry",
           "Galculator",
+          "qalculate-gtk",
+          "Qalculate-gtk",
           "Gnome-font-viewer",
           "Gpick",
           "Imagewriter",
@@ -941,8 +924,8 @@ awful.rules.rules = {
           "Wpa_gui",
           "pinentry",
           "veromix",
-          "xtightvncviewer",
-          "Xfce4-terminal"},
+          "xtightvncviewer"
+          },
 
         name = {
           "Event Tester",  -- xev.
@@ -959,7 +942,12 @@ awful.rules.rules = {
     { rule_any = {
        	class = {
        		"Polkit-gnome-authentication-agent-1",
-			"Arcolinux-calamares-tool.py"
+          "pavucontrol",
+          "Pavucontrol",
+          "xfce4-appfinder",
+          "Xfce4-appfinder",
+          "Arcolinux-calamares-tool.py",
+          "Xfce4-terminal"
 				},
 				},
       	properties = { floating = true },

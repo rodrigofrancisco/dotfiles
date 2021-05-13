@@ -30,9 +30,9 @@ run shutter --min_at_startup
 #run spotify
 #run ckb-next -b
 
-#run telegram-desktop &
-#run discord &
-#run zoom &
-#run skypeforlinux &
+run telegram-desktop
+run discord
+run zoom
+run skypeforlinux
 
-#run brave &
+run brave
