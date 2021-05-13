@@ -87,7 +87,7 @@ noremap <Left> :vertical resize -5 <cr>
 noremap <Up> :resize +5 <cr>
 noremap <Down> :resize -5 <cr>
 
-inoremap ii <Esc>
+inoremap jj <Esc>
 " Places the cursor after the )
 inoremap aa <esc>2la
 vnoremap <leader>eb :w! b.sql<cr>:vsp b.sql<cr>
