@@ -340,6 +340,10 @@ ex ()
 #create a file called .zshrc-personal and put all your personal aliases
 #in there. They will not be overwritten by skel.
 
+# active VIM mode
+bindkey -v
+export KEYTIMEOUT=1
+
 [[ -f ~/.zshrc-personal ]] && . ~/.zshrc-personal
 
 # reporting tools - install when not installed
