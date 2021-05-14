@@ -13,6 +13,12 @@ Music/
 Edraw/
 snap/
 
+*.bak
+*.bkp
+*-bkp
+*-bak
+old/
+
 # Apps generated hidden directories
 .config-*
 .AndroidStudio4.*/
