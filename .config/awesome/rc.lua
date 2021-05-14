@@ -810,7 +810,7 @@ awful.rules.rules = {
 
     -- Set applications to always map on the tag 1 on screen 1.
     -- find class or role via xprop command
-    { rule = { class = "brave-browser" },
+    { rule = { class = "Brave-browser" },
       properties = { screen = 1, tag = awful.util.tagnames[1], 
       switchtotag = true  } },
 
@@ -838,6 +838,9 @@ awful.rules.rules = {
         properties = { screen = 1, tag = awful.util.tagnames[9], 
         switchtotag = true  } },
     { rule = { class = "TelegramDesktop" },
+        properties = { screen = 1, tag = awful.util.tagnames[9], 
+        switchtotag = true  } },
+    { rule = { class = "Mailspring" },
         properties = { screen = 1, tag = awful.util.tagnames[9], 
         switchtotag = true  } },
 
@@ -905,10 +908,7 @@ awful.rules.rules = {
         },
         class = {
           "Arcolinux-welcome-app.py",
-          "Blueberry",
           "Galculator",
-          "qalculate-gtk",
-          "Qalculate-gtk",
           "Gnome-font-viewer",
           "Gpick",
           "Imagewriter",
@@ -917,7 +917,6 @@ awful.rules.rules = {
           "MessageWin",  -- kalarm.
           "arcolinux-logout",
           "Peek",
-          "Skype",
           "System-config-printer.py",
           "Sxiv",
           "Unetbootin.elf",
@@ -942,6 +941,10 @@ awful.rules.rules = {
     { rule_any = {
        	class = {
        		"Polkit-gnome-authentication-agent-1",
+          "qalculate-gtk",
+          "Qalculate-gtk",
+          "Skype",
+          "Blueberry",
           "pavucontrol",
           "Pavucontrol",
           "xfce4-appfinder",

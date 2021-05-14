@@ -34,5 +34,6 @@ run telegram-desktop
 run discord
 run zoom
 run skypeforlinux
+run mailspring
 
 run brave
