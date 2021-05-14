@@ -348,7 +348,7 @@ export KEYTIMEOUT=1
 
 # reporting tools - install when not installed
 # install neofetch
-neofetch
+#neofetch
 # install screenfetch
 #screenfetch
 # install ufetch-git
@@ -363,3 +363,4 @@ neofetch
 #hfetch
 # install lolcat
 # neofetch | lolcat
+colorscript random
