@@ -1,28 +1,73 @@
 # Git ignore file for my dotfiles git bare repository
 
-# User directories
+# User default directories
+Desktop/
 Documents/
 Downloads/
+Music/
 Pictures/
-Arduino/
-Desktop/
+Public/
+snap/
 Templates/
 Videos/
-Public/
-Music/
-Edraw/
-snap/
 
+# Program directories at home directory
+Arduino/
+Edraw/
+MATLAB Add-Ons/
+
+# User generated directories
+.programs/
+.images/
+
+# Python cache
+*__pycache__*
+
+# backupfiles
 *.bak
 *.bkp
 *-bkp
 *-bak
 old/
+.*bak
+.*bk
+.*history
+.attach_*
+
+# Undecided 
+.xinitrc
+.conkyrc
+.profile
+
+.dmrc
+.screenrc
+.vuerc
+.xsession
+.xsessionrc
+
+# Files 
+.Xauthority
+.face
+.packettracer
+.rnd
+
+.bash_logout
+.viminfo*
+.viminfz.tmp
+.xsession-errors*
+.h2.server.properties
+.gtkrc-2.0
+.install4j
+.yarnrc
+.zcompdump*
+
+.bin/
+.vim/
 
 # Apps generated hidden directories
 .config-*
-.AndroidStudio4.*/
-.android
+.AndroidStudio*/
+.android/
 .com.kodedu.boot.AppStarter/
 .dia/
 .dropbox/
@@ -56,8 +101,7 @@ old/
 .xournalpp/
 .zoom/
 .pylint.d/
-.vscode-oss
-
+.vscode-oss/
 .links/
 .elinks/
 .ssh/
@@ -68,42 +112,141 @@ old/
 .emacs.d/
 .doom.d/
 
-.bin/
-.vim/
-
-.programs/
-.images/
-
-# Files 
-.Xauthority
-.face
-.packettracer
-
-.rnd
-
-.*bak
-.*bk
-.*history
-.attach_*
-
-.bash_logout
-.viminfo*
-.viminfz.tmp
-.xsession-errors*
-.h2.server.properties
-.gtkrc-2.0
-.install4j
-.yarnrc
-.zcompdump*
-
-# Maybe I'll uncomment this later
-.conkyrc
-.dmrc
-.profile
-.screenrc
-.vuerc
-.xinitrc
-.xsession
-.xsessionrc
-
-*__pycache__*
+.config/BraveSoftware/
+.config/Code - OSS/Backups/
+.config/Code - OSS/Cache/
+.config/Code - OSS/CachedData/
+.config/Code - OSS/CachedExtensionVSIXs/
+.config/Code - OSS/CachedExtensions/
+.config/Code - OSS/Code Cache/
+.config/Code - OSS/Cookies
+.config/Code - OSS/Cookies-journal
+.config/Code - OSS/Crash Reports/
+.config/Code - OSS/Dictionaries/
+.config/Code - OSS/GPUCache/
+.config/Code - OSS/Local Storage/
+.config/Code - OSS/Network Persistent State
+.config/Code - OSS/Preferences
+.config/Code - OSS/Session Storage/
+.config/Code - OSS/TransportSecurity
+.config/Code - OSS/User/globalStorage/
+.config/Code - OSS/User/workspaceStorage/
+.config/Code - OSS/exthost Crash Reports/
+.config/Code - OSS/languagepacks.json
+.config/Code - OSS/logs/
+.config/Code - OSS/machineid
+.config/Code - OSS/rapid_render.json
+.config/Code - OSS/storage.json
+.config/GIMP/
+.config/GeoGebra/
+.config/Kvantum/
+.config/LosslessCut/
+.config/Mailspring/
+.config/QtProject.conf
+.config/Thunar/
+.config/Trolltech.conf
+.config/Typora/
+.config/Unknown Organization/
+#.config/arcolinux-betterlockscreen/
+#.config/arcolinux-tweak-tool/
+#.config/arcolinux-welcome-app/
+#.config/arcologout/
+#.config/autostart/
+.config/baloofileinformationrc
+.config/cef_user_data/
+.config/coc/
+#.config/conky/
+.config/dconf/
+.config/discord/
+.config/dolphinrc
+.config/equalx/
+.config/evince/
+.config/filetypesrc
+.config/flameshot/
+.config/fontconfig/
+.config/galculator/
+.config/gsimplecal/
+.config/gtk-2.0/
+.config/gtk-3.0/
+.config/htop/
+#.config/i3/arcolinux-archive.theme
+#.config/i3/arcolinux-default.theme
+#.config/i3/arcolinux-dracut.theme
+#.config/i3/arcolinux-firedust.theme
+#.config/i3/arcolinux-frama.theme
+#.config/i3/arcolinux-gravemind.theme
+#.config/i3/arcolinux-mango.theme
+#.config/i3/arcolinux-mastermind.theme
+#.config/i3/arcolinux-mater.theme
+#.config/i3/arcolinux-mind.theme
+#.config/i3/arcolinux-mordor.theme
+#.config/i3/arcolinux-nantes.theme
+#.config/i3/arcolinux-pinky.theme
+#.config/i3/arcolinux-ruins.theme
+#.config/i3/arcolinux-solar.theme
+#.config/i3/arcolinux-sunset.theme
+#.config/i3/arcolinux-var-ashes.theme
+#.config/i3/arcolinux-var-nord.theme
+#.config/i3/arcolinux-var-sulpher.theme
+#.config/i3/arcolinux-zion.theme
+#.config/i3/config-polybar
+#.config/i3/conky-i3statusbar
+#.config/i3/i3blocks-awesome.conf
+#.config/i3/i3blocks-original.conf
+#.config/i3/i3blocks-rainbow.conf
+#.config/i3/i3blocks.conf
+#.config/i3/i3status.conf
+#.config/i3/start-conky-i3statusbar.sh
+#.config/i3/system-overview
+.config/inkscape/
+.config/kconf_updaterc
+.config/kde.org/
+.config/kdeglobals
+.config/knfsshare
+.config/konsolerc
+#.config/mimeapps.list
+.config/nano/
+.config/neofetch/
+.config/nitrogen/
+.config/nomacs/
+.config/nvim/plugged/
+.config/obs-studio/
+.config/okularpartrc
+.config/okularrc
+#.config/pavucontrol.ini
+#.config/pulse/
+.config/qalculate/
+.config/qt5ct/
+#.config/qtile/archive/
+#.config/qtile/icons/
+#.config/qtile/scripts/picom-toggle.sh
+#.config/qtile/scripts/set-pywal.sh
+#.config/qtile/scripts/set-screen-resolution-in-virtualbox.sh
+#.config/qtile/scripts/system-overview
+#.config/qtile/sxhkd/
+#.config/qtile/wall.jpg
+.config/rofi/config.rasi
+.config/session/
+.config/skypeforlinux/
+.config/spotify/
+#.config/termite/
+.config/trashrc
+.config/user-dirs.dirs
+.config/user-dirs.locale
+.config/variety/
+.config/viewnior/
+.config/vlc/
+.config/volumeicon/
+.config/xfce4/
+.config/yad.conf
+.config/zoomus.conf
+.equalx/
+#.github/README.assets/
+#.xmonad/scripts/picom-toggle.sh
+#.xmonad/scripts/set-screen-resolution-in-virtualbox.sh
+#.xmonad/scripts/system-overview
+#.xmonad/wall.jpg
+#.xmonad/xmonad-x86_64-linux
+#.xmonad/xmonad.errors
+#.xmonad/xmonad.hi
+#.xmonad/xmonad.o
