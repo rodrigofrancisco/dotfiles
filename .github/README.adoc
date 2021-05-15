@@ -33,6 +33,63 @@ I started backing up my dotfiles after some time of using *i3 window manager*
 and *neovim editor* as my daily tools to program and in general, to use the
 computer.
 
+== Programs
+
+This are the programs/tools I usually install after the installation of
+*ArcoLinux* OS:
+
+=== Official repositories
+
+* `lsd`: Alternative to _ls_
+* `bat`: Replacement of _cat_
+* `neovim`: Alternative to _vim_
+* `texlive-most`: LaTeX packages
+* `node`: NodeJS and npm
+* `qalculate-gtk`: Calculator
+* `okular`: PDF viewer
+* `qt5ct`: Qt5 theme manager
+* `konsole`: Another terminal emulator
+* `geogebra`: Function plotter
+
+=== AUR 
+
+* `nerd-fonts-hack`: Fonts and icons
+* `shell-color-scripts`: Alternative utility to _neofetch_
+* `xournal`: PDF editor
+* `mailspring`: Mail manager
+* `equalx`: LaTeX equation maker
+* `drawio-desktop`: Diagram program
+* `typora`: Markdown editor
+* `losslesscut-bin`: Video cutter
+
+=== Snap
+
+* `shutter`: Video cutter
+
+== Workflow
+
+//=== Global keybinding for WMs
+
+=== Window Manager
+
+==== Awesome WM
+
+image::awesome-wm.png[]
+
+==== Qtile WM
+
+image::qtile-wm.png[]
+
+==== i3 WM
+
+image::i3-wm.png[]
+
+==== Xmonad WM
+
+image::xmonad-wm.png[]
+
+//=== Relevant `aliases`
+
 == Backup technique
 
 I am using a _git bare repository_ to backup my dotfiles as suggested by DT on
