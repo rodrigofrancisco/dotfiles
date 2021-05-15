@@ -64,7 +64,7 @@ This are the programs/tools I usually install after the installation of
 
 === Snap
 
-* `shutter`: Video cutter
+* `shutter`: Best screenshots
 
 == Workflow
 
