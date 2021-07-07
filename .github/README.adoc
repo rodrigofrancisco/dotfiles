@@ -44,7 +44,7 @@ This are the programs/tools I usually install after the installation of
 * `bat`: Replacement of _cat_
 * `neovim`: Alternative to _vim_
 * `texlive-most`: LaTeX packages
-* `node`: NodeJS and npm
+* `npm`: NodeJS and npm
 * `qalculate-gtk`: Calculator
 * `okular`: PDF viewer
 * `qt5ct`: Qt5 theme manager
