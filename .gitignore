@@ -17,6 +17,7 @@ Edraw/
 MATLAB Add-Ons/
 GNS3/
 nltk_data/
+VirtualBox/
 packettracer
 
 .altera.quartus/
@@ -261,8 +262,8 @@ old/
 #.xmonad/scripts/picom-toggle.sh
 #.xmonad/scripts/set-screen-resolution-in-virtualbox.sh
 #.xmonad/scripts/system-overview
-#.xmonad/wall.jpg
+wall.jpg
 #.xmonad/xmonad-x86_64-linux
-#.xmonad/xmonad.errors
-#.xmonad/xmonad.hi
-#.xmonad/xmonad.o
+.xmonad/xmonad.errors
+.xmonad/xmonad.hi
+*.o
