@@ -1,0 +1,179 @@
+= Dotfiles
+Creado por Rodrigo Francisco <rhodfra@gmail.com>
+Version 1.0, 02.02.2021
+:description: Dotfiles configuracion
+//:sectnums:
+
+:imagesdir: ./README.assets/
+
+// Resaltar sintaxis
+:source-highlighter: pygments
+
+// Iconos para entorno local
+ifndef::env-github[:icons: font]
+
+// Iconos para entorno github
+ifdef::env-github[]
+:caution-caption: :fire:
+:important-caption: :exclamation:
+:note-caption: :paperclip:
+:tip-caption: :bulb:
+:warning-caption: :warning:
+endif::[]
+
+This are my dotfiles configurations.
+
+A dotfile is a Unix file starting with a dot (period) that saves the
+configuration for many of our Unix programs.
+
+In fact, you are seeing a fraction of my current $HOME directory.
+
+_When is it time to backup your configuration files?_ ::
+I started backing up my dotfiles after some time of using *i3 window manager*
+and *neovim editor* as my daily tools to program and in general, to use the
+computer.
+
+== Programs
+
+This are the programs/tools I usually install after the installation of
+*ArcoLinux* OS:
+
+=== Official repositories
+
+* `lsd`: Alternative to _ls_
+* `bat`: Replacement of _cat_
+* `neovim`: Alternative to _vim_
+* `texlive-most`: LaTeX packages
+* `npm`: NodeJS and npm
+* `qalculate-gtk`: Calculator
+* `okular`: PDF viewer
+* `qt5ct`: Qt5 theme manager
+* `konsole`: Another terminal emulator
+* `geogebra`: Function plotter
+
+=== AUR 
+
+* `nerd-fonts-hack`: Fonts and icons
+* `shell-color-scripts`: Alternative utility to _neofetch_
+* `xournal`: PDF editor
+* `mailspring`: Mail manager
+* `equalx`: LaTeX equation maker
+* `drawio-desktop`: Diagram program
+* `typora`: Markdown editor
+* `losslesscut-bin`: Video cutter
+
+=== Snap
+
+* `shutter`: Best screenshots
+
+== Workflow
+
+//=== Global keybinding for WMs
+
+=== Window Manager
+
+==== Awesome WM
+
+image::awesome-wm.png[]
+
+==== Qtile WM
+
+image::qtile-wm.png[]
+
+==== i3 WM
+
+image::i3-wm.png[]
+
+==== Xmonad WM
+
+image::xmonad-wm.png[]
+
+//=== Relevant `aliases`
+
+== Backup technique
+
+I am using a _git bare repository_ to backup my dotfiles as suggested by DT on
+Youtube (https://www.youtube.com/watch?v=tBoLDpTWVOM&t=2s[video]), whom at the
+same time is using the following 
+https://www.atlassian.com/git/tutorials/dotfiles[article from Atlassian] 
+
+=== Git bare repository setup
+
+If you what to have your dotfiles backup do the following:
+
+[NOTE]
+Firstly, I recommend to look at the concept of a _git bare repository_
+
+==== 1. Create a bare repository
+
+Create a bare repository wherever it suit you. I have it in a separe partition
+from the operative system (that is in fact where I place all my files). Use the
+following git command:
+
+[source,sh]
+git init --bare <path>
+
+This will create a git repository which have objects we normally do not touch,
+but that make our repository database work (for example, HEAD is save here).
+
+==== 2. Link the bare repository with a worktree
+
+Now we need the bare repository to (kind of) point to a specific folder, call
+the _worktree_ (normally the worktree and the repository are in the same
+directory and you identified the repo by a hidden directory called _.git_).
+
+Anyway, if none of that is clear, Just do the following:
+
+[source,sh]
+echo "alias dot='/usr/bin/git --git-dir=<path-to-bare-repo> --work-tree=$HOME'"
+>> ~/.bashrc
+
+.Observations
+* You can name the alias as you please, in this case I called it _dot_
+* The command creates a permanent alias in your .bashrc, however you can created
+  manually
+* As additional information: Somme of us prefered to save the aliases in
+  ~/.bashrc-personal or ~/.zshrc-personal if you are using *zsh shell*
+
+Reload your shell as you like (close it and open if you do not know of any other
+way).
+
+Finally, you are ready to use commands such as 
+
+[source,sh]
+dot status 
+dot add <dotfile> 
+dot commit 
+dot push origin master
+
+==== 3. Hide untracked files
+
+Some articles advise to hide the untracked files records when you check the
+repository status.
+
+Personally I didn't did it because the status guide me to se what I wanted to
+backup. Anyway, maybe I will hide the status later so here it is
+
+[source,sh]
+dot config --local status.showUntrackedFiles no
+
+*IMPORTANT:* I didn't use the above command but as a consecuence I create a
+_.gitignore file_ whichi I think is a fair solution for the moment.
+
+
+==== 4. Create a README file (optional)
+
+Finally I create this file using _asciidoc_ syntax under the _.github_ directory
+in my home directory. I din't want to have a README file in my home directory
+but I want it to be in the repo, for that reason is in _.github_
+
+==== 5. Start commit the the dotfiles 
+
+The last step is to add and commit every important file I have. The process is
+exaclty the same as if you where is a normal repository, except, instead of
+using _git_ you have to use _dot_. For example:
+
+[source,sh]
+dot add .zshrc
+dot commit -m "added zsh shell configuration" 
+dot push origin master

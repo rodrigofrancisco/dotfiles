@@ -1,0 +1,7 @@
+[user]
+	email = rhodfra@gmail.com
+	name = rhodstar
+[core]
+	editor = nvim
+[init]
+	defaultBranch = main
