@@ -1,0 +1,46 @@
+{
+  "texlab.server.autoDownload": true,
+  "editor.minimap.enabled": false,
+  "editor.tabSize": 2,
+  "prettier.jsxSingleQuote": true,
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.rulers": [80, 100],
+  "workbench.colorCustomizations": {
+    "editorRuler.foreground": "#9e8ddb"
+  },
+  // VIM MODE configuration
+  "editor.lineNumbers": "relative",
+  "vim.easymotion": true,
+  "vim.incsearch": true,
+  "vim.useSystemClipboard": true,
+  "vim.useCtrlKeys": true,
+  "vim.hlsearch": true,
+  "vim.insertModeKeyBindings": [
+    {
+      "before": ["j", "j"],
+      "after": ["<Esc>"]
+    }
+    // {
+    //   "before": ["a", "a"],
+    //   "after": ["<Esc>l"]
+    // }
+  ],
+  "vim.normalModeKeyBindingsNonRecursive": [
+    {
+      "before": ["<leader>", "d"],
+      "after": ["d", "d"]
+    },
+    {
+      "before": ["<C-n>"],
+      "commands": [":nohl"]
+    }
+  ],
+  "vim.leader": ",",
+  "vim.handleKeys": {
+    "<C-a>": false,
+    "<C-f>": false
+  },
+  "editor.renderWhitespace": "all",
+  "window.zoomLevel": 1
+}
