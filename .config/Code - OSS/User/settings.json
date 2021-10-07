@@ -42,5 +42,5 @@
     "<C-f>": false
   },
   "editor.renderWhitespace": "all",
-  "window.zoomLevel": 1
+  "window.menuBarVisibility": "toggle"
 }
