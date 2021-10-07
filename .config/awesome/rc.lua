@@ -371,6 +371,10 @@ globalkeys = my_table.join(
       awful.spawn("/f/dev/scripts/screenlayout/normal.sh") end,
         {description = "Set only 1 monitor", group = "screen"}),
 
+    awful.key({ modkey,}, "F11", function () 
+      awful.spawn("/f/dev/scripts/screenlayout/big-screen.sh") end,
+        {description = "Set wide monitor", group = "screen"}),
+
     awful.key({ modkey,}, "F12", function () 
       awful.spawn("/f/dev/scripts/screenlayout/extendedR.sh") end,
         {description = "Set 2nd monitor to Right", group = "screen"}),
@@ -433,10 +437,10 @@ globalkeys = my_table.join(
               {description = "view  next nonempty", group = tagGroupLabel}),
 
     -- Default client focus
-    awful.key({ altkey,}, "j", function () awful.client.focus.byidx( 1) end,
+    awful.key({ modkey,}, "<", function () awful.client.focus.byidx( 1) end,
         {description = "focus next by index", group = clientGroupLabel}
     ),
-    awful.key({ altkey,}, "k", function () awful.client.focus.byidx(-1) end,
+    awful.key({ modkey,"Shift"}, "<", function () awful.client.focus.byidx(-1) end,
         {description = "focus previous by index", group = clientGroupLabel}
     ),
 
