@@ -142,8 +142,3 @@ alias status="systemctl status"
 alias ssystemctl="sudo systemctl"
 
 alias tree="tree -C"
-
-# EXPORTS TO EASYLY CHANGE MOST VISITED DIRECTORIES
-
-export ccnp="/f/semestre-10/ccnp"
-export dir-latex="/f/dev/cursos/latex"

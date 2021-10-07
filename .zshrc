@@ -161,3 +161,5 @@ bindkey '^N' history-search-forward              # Go forward/search in history 
 # neofetch | lolcat
 
 colorscript random
+
+source /home/rhodstar/.config/broot/launcher/bash/br
