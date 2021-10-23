@@ -46,11 +46,19 @@ Config { font            = "xft:Ubuntu:weight=bold:pixelsize=11:antialias=true:h
                         -- Script that dynamically adjusts xmobar padding depending on number of trayer icons.
                     , Run Com "/home/rhodstar/.config/xmobar/trayer-padding-icon.sh" [] "trayerpad" 20
                         -- Prints out the left side items such as workspaces, layout, etc.
-                    --, Run Battery [] "battery" 10 -- battery time
-                    , Run UnsafeStdinReader
+                    --, Run Battery "<fn=2>\xf108</fn> Bat: <left>" "battery" 60
+                    , Run BatteryP ["BAT0"]
+                    ["-t", "<fn=2>\xf241</fn> <acstatus><watts> (<left>%)",
+                      "-L", "10", "-H", "80", "-p", "3",
+                      "--", "-O", "<fc=green>On</fc> - ", "-i", "",
+                      "-a", "notify-send -u critical 'Battery running out!!'",
+                      "-L", "-15", "-H", "-5",
+                      "-A", "3"
+                    ] 600
+                    , Run StdinReader
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = " <icon=haskell_20.xpm/>   <fc=#666666>|</fc> %UnsafeStdinReader% }{  <box type=Bottom width=2 mb=2 color=#ecbe7b><fc=#ecbe7b><action=`alacritty -e htop`>%cpu%</action></fc></box>    <box type=Bottom width=2 mb=2 color=#ff6c6b><fc=#ff6c6b><action=`alacritty -e htop`>%memory%</action></fc></box>    <box type=Bottom width=2 mb=2 color=#a9a1e1><fc=#a9a1e1><action=`alacritty -e htop`>%disku%</action></fc></box>  <box type=Bottom width=2 mb=2 color=#ecbe7b><fc=#ecbe7b>%bell%  <action=`alacritty -e sudo pacman -Syu`>%battery%</action></fc></box>  <box type=Bottom width=2 mb=2 color=#c678dd><fc=#c678dd>%bell%  <action=`alacritty -e sudo pacman -Syu`>%pacupdate%</action></fc></box>    <box type=Bottom width=2 mb=2 color=#46d9ff><fc=#46d9ff><action=`emacsclient -c -a 'emacs' --eval '(doom/window-maximize-buffer(dt/year-calendar))'`>%date%</action></fc></box> %trayerpad%"
+       , template = " <icon=haskell_20.xpm/>   <fc=#666666>|</fc> %StdinReader% }{  <box type=Bottom width=2 mb=2 color=#ecbe7b><fc=#ecbe7b>%cpu%</fc></box>    <box type=Bottom width=2 mb=2 color=#ff6c6b><fc=#ff6c6b>%memory%</fc></box>    <box type=Bottom width=2 mb=2 color=#a9a1e1><fc=#a9a1e1>%disku%</fc></box>  <box type=Bottom width=2 mb=2 color=#ecbe7b><fc=#ecbe7b>%battery%</fc></box>  <box type=Bottom width=2 mb=2 color=#c678dd><fc=#c678dd>%bell%  %pacupdate%</fc></box>    <box type=Bottom width=2 mb=2 color=#46d9ff><fc=#46d9ff>%date%</fc></box> %trayerpad%"
        }
 
