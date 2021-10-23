@@ -97,7 +97,7 @@ windowCount = gets $ Just . show . length . W.integrate' . W.stack . W.workspace
 myStartupHook :: X ()
 myStartupHook = do
     spawnOnce "tvolnoti -T dark" -- & is not needed
-    spawnOnce "/f/dev/scripts/screenlayout.sh"
+    spawnOnce "/home/rhodstar/.scripts/screenlayout.sh"
     spawnOnce "nm-applet &"
     spawnOnce "volumeicon &"
     spawnOnce "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &"
