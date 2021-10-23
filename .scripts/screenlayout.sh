@@ -5,6 +5,7 @@
 
 position=${1:-left-of} # left-of | right-of | above | below | duplicate | normal(just main mon)
 resolution_dup=${2} # Required if $position=duplicate
+resolution_main=${3:-$(xrandr | grep \* | awk '{print $1}' | head -1)}
 
 # Checks if option is valid
 if [[ "$position" != "normal" && "${position}" != "duplicate" && "${position}" != "left-of" && "
@@ -27,15 +28,15 @@ layout="xrandr"
 case $position in
   "normal")
     # Turns off all secondary monitor and the primary remains
+    resolution_pref=${3:-$(xrandr | grep -A 1 \+ | tail -1 | awk '{print $1}' | head -1)}
     for secondary in $secondaries; do
-      layout="xrandr --output ${secondary} --off"
+      layout="xrandr --output ${primary} --mode ${resolution_pref} --output ${secondary} --off"
       echo "Exec: ${layout}"
       $layout;
     done
     exit
     ;;
   "duplicate")
-    resolution_main=$(xrandr | grep \* | awk '{print $1}' | head -1)
     resolution_main_array=(`echo $resolution_main | tr 'x' ' '`)
     x_main=${resolution_main_array[0]}
     y_main=${resolution_main_array[1]}
@@ -47,7 +48,7 @@ case $position in
     scale_x=$(echo "scale=2 ; $x_main / $x_dup" | bc)
     scale_y=$(echo "scale=2 ; $y_main / $y_dup" | bc)
     for secondary in $secondaries; do
-      layout="xrandr --output ${secondary} --mode ${resolution_dup} --same-as ${primary} --scale ${scale_x}x${scale_y}"
+      layout="xrandr --output ${primary} --mode ${resolution_main} --output ${secondary} --mode ${resolution_dup} --same-as ${primary} --scale ${scale_x}x${scale_y}"
       echo "Exec: ${layout}"
       $layout;
     done
