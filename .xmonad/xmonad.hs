@@ -248,6 +248,7 @@ myManageHook = composeAll
      , className =? "Yad"             --> doCenterFloat
      , className =? "pavucontrol"     --> doCenterFloat
      , className =? "Pavucontrol"     --> doCenterFloat
+     , className =? "Qalculate-gtk"   --> doCenterFloat
      , className =? "Gimp"            --> doFloat
      --, title =? "Oracle VM VirtualBox Manager"  --> doFloat
      , (className =? "firefox" <&&> resource =? "Dialog") --> doFloat  -- Float Firefox Dialog
@@ -338,6 +339,10 @@ myKeys =
     -- Screenshots
         , ("<Print>", spawn "flameshot full -p /f/screenshots") 
         , ("S-<Print>", spawn "flameshot gui")  -- Switch focus to prev tab
+    -- Monitors
+        , ("M-<F9>", spawn "/home/rhodstar/.scripts/screenlayout.sh left-of")
+        , ("M-<F12>", spawn "/home/rhodstar/.scripts/screenlayout.sh right-of")
+        , ("M-<F10>", spawn "/home/rhodstar/.scripts/screenlayout.sh normal")
 
     -- KB_GROUP Multimedia Keys
         , ("<XF86AudioMute>", spawn "amixer set Master toggle")
