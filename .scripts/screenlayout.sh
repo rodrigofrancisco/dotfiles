@@ -8,8 +8,8 @@ resolution_dup=${2} # Required if $position=duplicate
 resolution_main=${3:-$(xrandr | grep \* | awk '{print $1}' | head -1)}
 
 # Checks if option is valid
-if [[ "$position" != "normal" && "${position}" != "duplicate" && "${position}" != "left-of" && "
-  ${position}" != "right-of" && "${position}" != "above" && "${position}" != "below" ]]; then
+if [[ "$position" != "normal" && "${position}" != "duplicate" && "${position}" != "left-of" && 
+  "${position}" != "right-of" && "${position}" != "above" && "${position}" != "below" ]]; then
   echo "Invalid option"
   exit 400
 fi
