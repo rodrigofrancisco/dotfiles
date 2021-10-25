@@ -15,5 +15,5 @@ font:
     family: monospace
     style: Bold Italic
 
-  size: 8
-background_opacity: 0.8
+  size: 10
+background_opacity: 1

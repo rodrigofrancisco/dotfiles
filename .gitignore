@@ -39,6 +39,7 @@ packettracer
 *.bkp
 *-bkp
 *-bak
+*bk
 .*bak
 .*bk
 .*history

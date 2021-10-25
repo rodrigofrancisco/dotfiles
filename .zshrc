@@ -163,3 +163,7 @@ bindkey '^N' history-search-forward              # Go forward/search in history 
 colorscript random
 
 source /home/rhodstar/.config/broot/launcher/bash/br
+
+PATH=$PATH:/home/rhodstar/.local/share/gem/ruby/3.0.0/bin
+
+export PATH
