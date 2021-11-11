@@ -97,7 +97,7 @@ windowCount = gets $ Just . show . length . W.integrate' . W.stack . W.workspace
 myStartupHook :: X ()
 myStartupHook = do
     spawnOnce "tvolnoti -T dark" -- & is not needed
-    spawnOnce "/home/rhodstar/.scripts/screenlayout.sh"
+    spawnOnce "/home/rhodstar/.scripts/screenlayout"
     spawnOnce "nm-applet &"
     spawnOnce "volumeicon &"
     spawnOnce "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &"
@@ -338,11 +338,13 @@ myKeys =
 
     -- Screenshots
         , ("<Print>", spawn "flameshot full -p /f/screenshots") 
-        , ("S-<Print>", spawn "flameshot gui")  -- Switch focus to prev tab
+        , ("S-<Print>", spawn "flameshot gui")
+        , ("M-<Print>", spawn "flameshot screen -n 0 -p /f/screenshots")
+        , ("C-<Print>", spawn "flameshot screen -n 1 -p /f/screenshots")
     -- Monitors
-        , ("M-<F9>", spawn "/home/rhodstar/.scripts/screenlayout.sh left-of")
-        , ("M-<F12>", spawn "/home/rhodstar/.scripts/screenlayout.sh right-of")
-        , ("M-<F10>", spawn "/home/rhodstar/.scripts/screenlayout.sh normal")
+        , ("M-<F9>", spawn "/home/rhodstar/.scripts/screenlayout left-of")
+        , ("M-<F12>", spawn "/home/rhodstar/.scripts/screenlayout right-of")
+        , ("M-<F10>", spawn "/home/rhodstar/.scripts/screenlayout normal")
 
     -- KB_GROUP Multimedia Keys
         , ("<XF86AudioMute>", spawn "amixer set Master toggle")
