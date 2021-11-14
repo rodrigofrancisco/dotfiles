@@ -28,7 +28,7 @@ layout="xrandr"
 case $position in
   "normal")
     # Turns off all secondary monitor and the primary remains
-    resolution_pref=${3:-$(xrandr | grep -A 1 \+ | tail -1 | awk '{print $1}' | head -1)}
+    resolution_pref=${3:-$(xrandr | grep -A 1 ${primary} | tail -1 | awk '{print $1}')}
     for secondary in $secondaries; do
       layout="xrandr --output ${primary} --mode ${resolution_pref} --output ${secondary} --off"
       echo "Exec: ${layout}"
