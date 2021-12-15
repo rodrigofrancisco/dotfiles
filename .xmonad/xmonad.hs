@@ -108,6 +108,8 @@ myStartupHook = do
     spawnOnce "/usr/bin/emacs --daemon &"
     spawnOnce "/usr/lib/notification-daemon-1.0/notification-daemon &"
     spawnOnce "xfce4-power-manager &"
+    --spawnOnce "telegram-desktop"
+    --spawnOnce "mailspring"
     setWMName "LG3D"
 
 myColorizer :: Window -> Bool -> X (String, String)
@@ -224,7 +226,7 @@ myLayoutHook = avoidStruts $ mouseResize $ windowArrange $ T.toggleLayouts float
                                  ||| tallAccordion
                                  ||| grid
 
-myWorkspaces = [" www ", " sys ", " dev ", " doc ", " vbox ", " vid ", " conf ", " rec ", " com "]
+myWorkspaces = [" www ", " sys ", " dev ", " doc ", " www2 ", " vid ", " conf ", " rec ", " com "]
 myWorkspaceIndices = M.fromList $ zipWith (,) myWorkspaces [1..] -- (,) == \x y -> (x,y)
 
 --clickable ws = "<action=xdotool key super+"++show i++">"++ws++"</action>"
