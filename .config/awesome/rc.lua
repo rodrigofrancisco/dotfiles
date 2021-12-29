@@ -72,28 +72,13 @@ end
 
 run_once({ "unclutter -root" }) -- entries must be comma-separated
 
--- This function implements the XDG autostart specification
---[[
-awful.spawn.with_shell(
-  'if (xrdb -query | grep -q "^awesome\\.started:\\s*true$"); then exit; fi;' ..
-  'xrdb -merge <<< "awesome.started:true";' ..
-  -- list each of your autostart commands, followed by ; inside single quotes,
-  -- followed by ..
-  'dex --environment Awesome --autostart --search-paths ' ..
-  '"$XDG_CONFIG_DIRS/autostart:$XDG_CONFIG_HOME/autostart"' 
-  -- https://github.com/jceb/dex
-)
---]]
-
-
 -- ### Variable definitions
 local themes = {
-  "multicolor",		-- 1
+  "multicolor",		      -- 1
   "powerarrow",      		-- 2
   "powerarrow-blue",	 	-- 3
-  "blackburn",		-- 4
+  "blackburn",		      -- 4
 }
-
 
 -- choose your theme here
 local chosen_theme = themes[1]
@@ -124,39 +109,32 @@ awful.util.terminal = terminal
 awful.util.tagnames = {  "➊", "➋", "➌", "➍", "➎", "➏", "➐", "➑", "➒"}
 --awful.util.tagnames = {  "➊", "➋", "➌", "➍", "➎", "➏", "➐", "➑", "➒", "➓" }
 --awful.util.tagnames = { "⠐", "⠡", "⠲", "⠵", "⠻", "⠿" }
---awful.util.tagnames = { "⌘", "♐", "⌥", "ℵ" }
---awful.util.tagnames = { "www", "edit", "gimp", "inkscape", "music" }
 --awful.util.tagnames = { "www", "sys", "dev", "doc", "www2", "vid", "confe","rec", "com" }
 -- Use this : https://fontawesome.com/cheatsheet
 --awful.util.tagnames = { "", "", "", "", "" }
 
+-- AwesomeWM Layouts
 awful.layout.suit.tile.left.mirror = true
-
 awful.layout.layouts = {
   awful.layout.suit.max,
   awful.layout.suit.tile.left,
   awful.layout.suit.tile,
   awful.layout.suit.floating,
   awful.layout.suit.tile.bottom,
-  --awful.layout.suit.tile.top,
-  -- awful.layout.suit.fair,
-  --awful.layout.suit.fair.horizontal,
-  --awful.layout.suit.spiral,
-  --awful.layout.suit.spiral.dwindle,
-  --awful.layout.suit.max.fullscreen,
-  --awful.layout.suit.magnifier,
-  -- awful.layout.suit.corner.nw,
-  --awful.layout.suit.corner.ne,
-  --awful.layout.suit.corner.sw,
-  --awful.layout.suit.corner.se,
-  -- lain.layout.cascade,
-  --lain.layout.cascade.tile,
-  --lain.layout.centerwork,
-  --lain.layout.centerwork.horizontal,
-  lain.layout.termfair,
-  --lain.layout.termfair.center,
 }
 
+lain.layout.termfair.nmaster           = 3
+lain.layout.termfair.ncol              = 1
+lain.layout.termfair.center.nmaster    = 3
+lain.layout.termfair.center.ncol       = 1
+lain.layout.cascade.tile.offset_x      = dpi(2)
+lain.layout.cascade.tile.offset_y      = dpi(32)
+lain.layout.cascade.tile.extra_padding = dpi(5)
+lain.layout.cascade.tile.nmaster       = 5
+lain.layout.cascade.tile.ncol          = 2
+
+
+-- Mouse button actions
 awful.util.taglist_buttons = my_table.join(
   awful.button({ }, 1, function(t) t:view_only() end ),
   awful.button({ }, 3, awful.tag.viewtoggle),
@@ -201,40 +179,27 @@ awful.util.tasklist_buttons = my_table.join(
   awful.button({ }, 5, function () awful.client.focus.byidx(-1) end)
 )
 
-lain.layout.termfair.nmaster           = 3
-lain.layout.termfair.ncol              = 1
-lain.layout.termfair.center.nmaster    = 3
-lain.layout.termfair.center.ncol       = 1
-lain.layout.cascade.tile.offset_x      = dpi(2)
-lain.layout.cascade.tile.offset_y      = dpi(32)
-lain.layout.cascade.tile.extra_padding = dpi(5)
-lain.layout.cascade.tile.nmaster       = 5
-lain.layout.cascade.tile.ncol          = 2
-
-beautiful.init(string.format("%s/.config/awesome/themes/%s/theme.lua", os.getenv("HOME"), chosen_theme))
-
-
 -- ### Right click Awem Menu
-local myawesomemenu = {
-  { "hotkeys", function() return false, hotkeys_popup.show_help end },
-  { "arandr", "arandr" },
-}
+-- local myawesomemenu = {
+--   { "hotkeys", function() return false, hotkeys_popup.show_help end },
+--   { "arandr", "arandr" },
+-- }
 
-awful.util.mymainmenu = freedesktop.menu.build({
-  before = {
-    { "Awesome", myawesomemenu },
-    --{ "Atom", "atom" },
-    -- other triads can be put here
-  },
-  after = {
-    { "Terminal", terminal },
-    { "Log out", function() awesome.quit() end },
-    { "Sleep", "systemctl suspend" },
-    -- { "Restart", "systemctl reboot" },
-    -- { "Shutdown", "systemctl poweroff" },
-    -- other triads can be put here
-  }
-})
+-- awful.util.mymainmenu = freedesktop.menu.build({
+--   before = {
+--     { "Awesome", myawesomemenu },
+--     --{ "Atom", "atom" },
+--     -- other triads can be put here
+--   },
+--   after = {
+--     { "Terminal", terminal },
+--     { "Log out", function() awesome.quit() end },
+--     { "Sleep", "systemctl suspend" },
+--     -- { "Restart", "systemctl reboot" },
+--     -- { "Shutdown", "systemctl poweroff" },
+--     -- other triads can be put here
+--   }
+-- })
 -- hide menu when mouse leaves it
 --awful.util.mymainmenu.wibox:connect_signal("mouse::leave", function()
   --awful.util.mymainmenu:hide() end)
@@ -270,7 +235,8 @@ screen.connect_signal("arrange", function (s)
 end)
 
 -- Create a wibox for each screen and add it
-awful.screen.connect_for_each_screen(function(s) beautiful.at_screen_connect(s)
+awful.screen.connect_for_each_screen(function(s) 
+  beautiful.at_screen_connect(s)
   s.systray = wibox.widget.systray()
   s.systray.visible = true
 end)
@@ -278,7 +244,7 @@ end)
 
 -- ### Mouse bindings
 root.buttons(my_table.join(
-  awful.button({ }, 3, function () awful.util.mymainmenu:toggle() end),
+  -- awful.button({ }, 3, function () awful.util.mymainmenu:toggle() end),
   awful.button({ }, 4, awful.tag.viewnext),
   awful.button({ }, 5, awful.tag.viewprev)
 ))
@@ -302,10 +268,6 @@ globalkeys = my_table.join(
       awful.util.spawn( "rofi -show window" ) end,
         {description = "rofi open windows" , group = "lauchers" }),
 
-    -- super + ...
-    awful.key({ modkey }, "p", function () awful.util.spawn( "pavucontrol" ) end,
-        {description = "pulseaudio control", group = "system"}),
-
     --awful.key({ modkey }, "u", function () awful.screen.focused().mypromptbox:run() end,
           --{description = "run prompt", group = "super"}),
     
@@ -324,22 +286,6 @@ globalkeys = my_table.join(
     -- awful.key({ modkey, "Shift"   }, "x", awesome.quit,
     --          {description = "quit awesome", group = "awesome"}),
 
-    awful.key({ modkey,}, "F9", function () 
-      awful.spawn("/f/dev/scripts/screenlayout/extendedL.sh") end,
-        {description = "Set 2nd monitor to Left", group = "screen"}),
-
-    awful.key({ modkey,}, "F10", function () 
-      awful.spawn("/f/dev/scripts/screenlayout/normal.sh") end,
-        {description = "Set only 1 monitor", group = "screen"}),
-
-    awful.key({ modkey,}, "F11", function () 
-      awful.spawn("/f/dev/scripts/screenlayout/big-screen.sh") end,
-        {description = "Set wide monitor", group = "screen"}),
-
-    awful.key({ modkey,}, "F12", function () 
-      awful.spawn("/f/dev/scripts/screenlayout/extendedR.sh") end,
-        {description = "Set 2nd monitor to Right", group = "screen"}),
-
     -- ctrl+alt +  ...
     awful.key({ modkey1, altkey   }, "e", function() awful.util.spawn( "arcolinux-tweak-tool" ) end,
         {description = "ArcoLinux Tweak Tool", group = "system"}),
@@ -348,31 +294,14 @@ globalkeys = my_table.join(
     awful.key({ modkey1, altkey   }, "l", function() awful.util.spawn( "arcolinux-logout" ) end,
         {description = scrlocker, group = "alt+ctrl"}),
 
-    -- alt + ...
-
     -- screenshots
     awful.key({ }, "Print", function () 
       awful.util.spawn("flameshot full -p /f/screenshots") end,
         {description = "Flameshot fullscreen", group = "screenshots"}),
 
-    awful.key({ modkey}, "Print", function () 
-      awful.util.spawn( "flameshot screen -n 0 -p /f/screenshots" ) end,
-        {description = "Flameshot screen 0", group = "screenshots"}),
-    awful.key({ modkey, "Shift"  }, "Print", function() 
-      awful.util.spawn( "flameshot screen -n 1 -p /f/screenshots" ) end,
-        {description = "Flameshot screen 1", group = "screenshots"}),
-
-    awful.key({ modkey}, "y", function () 
-      awful.util.spawn( "flameshot screen -n 0 -p /f/screenshots" ) end,
-        {description = "Flameshot screen 0", group = "screenshots"}),
-    awful.key({ modkey, "Shift"  }, "y", function() 
-      awful.util.spawn( "flameshot screen -n 1 -p /f/screenshots" ) end,
-        {description = "Flameshot screen 1", group = "screenshots"}),
-
     awful.key({ modkey}, "c", function() 
       awful.util.spawn( "flameshot gui" ) end,
         {description = "GUI screenshot", group = "screenshots"}),
-
 
     -- Hotkeys Awesome
 
@@ -477,7 +406,6 @@ globalkeys = my_table.join(
     awful.key({ modkey }, "KP_Subtract", function ()
     awful.screen.focused().systray.visible = not awful.screen.focused().systray.visible
     end, {description = "Toggle systray visibility", group = "awesome"}),
-
 
 
     -- On the fly useless gaps change
